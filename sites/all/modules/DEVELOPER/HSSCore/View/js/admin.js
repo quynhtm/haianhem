@@ -89,7 +89,7 @@ FORMAT_NUMBER={
 
 HIDDEN_MENU_ADMIN = {
 	init:function(){
-		jQuery(".logo").click(function(){
+		jQuery("#box-menu-click").click(function(){
 			jQuery('.pageWrapper').toggleClass('act');
 		});
 	},

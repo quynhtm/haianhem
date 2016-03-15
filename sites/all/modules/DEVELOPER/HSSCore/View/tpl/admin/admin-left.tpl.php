@@ -11,74 +11,43 @@
 <div class="navigation">
 	<ul>
         <li <?php echo $dashboard ?>>
-        	<a class="" title="<?php echo t('Bảng điều khiển')?>" href="<?php echo $base_url?>/admincp">
-        		<i class="icon-dashboard"></i> Bảng điều khiển
-        	</a>
+        	<a class="" title="<?php echo t('Bảng điều khiển')?>" href="<?php echo $base_url?>/admincp">Bảng điều khiển</a>
         </li>
         <li <?php if($param[1]=='type'){?> class="active" <?php } ?>>
-            <a class="" title="" href="<?php echo $base_url ?>/admincp/type">
-                <i class="icon-elements"></i> Kiểu nội dung
-            </a>
+            <a class="" title="" href="<?php echo $base_url ?>/admincp/type">Kiểu nội dung </a>
         </li>
         <li <?php if($param[1]=='category'){?> class="active" <?php } ?>>
-            <a class="" title="" href="<?php echo $base_url ?>/admincp/category">
-                <i class="icon-elements"></i> Chuyên mục
-            </a>
+            <a class="" title="" href="<?php echo $base_url ?>/admincp/category">Chuyên mục</a>
         </li>
         <li <?php if($param[1]=='product'){?> class="active" <?php } ?>>
-            <a class="" title="" href="<?php echo $base_url ?>/admincp/product">
-                <i class="icon-elements"></i> Sản phẩm
-            </a>
+            <a class="" title="" href="<?php echo $base_url ?>/admincp/product">Sản phẩm</a>
         </li>
          <li <?php if($param[1]=='order'){?> class="active" <?php } ?>>
-            <a class="" title="" href="<?php echo $base_url ?>/admincp/order">
-                <i class="icon-elements"></i> Đơn hàng
-            </a>
+            <a class="" title="" href="<?php echo $base_url ?>/admincp/order">Đơn hàng</a>
         </li>
         <li <?php if($param[1]=='news'){?> class="active" <?php } ?>>
-            <a class="" title="" href="<?php echo $base_url ?>/admincp/news">
-                <i class="icon-elements"></i> Tin tức
-            </a>
+            <a class="" title="" href="<?php echo $base_url ?>/admincp/news">Tin tức</a>
         </li>
         <li <?php if($param[1]=='contact'){?> class="active" <?php } ?>>
-            <a class="" title="" href="<?php echo $base_url ?>/admincp/contact">
-                <i class="icon-elements"></i> Liên hệ
-            </a>
+            <a class="" title="" href="<?php echo $base_url ?>/admincp/contact">Liên hệ</a>
         </li>
         <li <?php if($param[1]=='ads'){?> class="active" <?php } ?>>
-            <a class="" title="" href="<?php echo $base_url ?>/admincp/ads">
-                <i class="icon-elements"></i> Quảng cáo
-            </a>
+            <a class="" title="" href="<?php echo $base_url ?>/admincp/ads">Quảng cáo</a>
         </li>
         <li <?php if($param[1]=='supportonline'){?> class="active" <?php } ?>>
-            <a class="" title="" href="<?php echo $base_url ?>/admincp/supportonline">
-                <i class="icon-elements"></i> Nick support
-            </a>
+            <a class="" title="" href="<?php echo $base_url ?>/admincp/supportonline">Nick support</a>
         </li>
         <li <?php if($param[1]=='users'){?> class="active" <?php } ?>>
-            <a class="" title="" href="<?php echo $base_url ?>/admincp/users">
-                <i class="icon-elements"></i> Nhân viên
-            </a>
+            <a class="" title="" href="<?php echo $base_url ?>/admincp/users">Nhân viên</a>
         </li>
         <li <?php if($param[1]=='permission'){?> class="active" <?php } ?>>
-            <a class="" title="" href="<?php echo $base_url ?>/admincp/permission">
-                <i class="icon-elements"></i> Phân quyền
-            </a>
+            <a class="" title="" href="<?php echo $base_url ?>/admincp/permission">Phân quyền</a>
         </li>
         <li <?php if($param[1]=='info'){?> class="active" <?php } ?>>
-         	<a class="" title="" href="<?php echo $base_url ?>/admincp/info">
-         		<i class="icon-elements"></i> Cài đặt
-         	</a>
+         	<a class="" title="" href="<?php echo $base_url ?>/admincp/info">Cài đặt</a>
         </li>
         <li <?php if($param[1]=='recyclebin'){?> class="active" <?php } ?>>
-            <a class="" title="" href="<?php echo $base_url ?>/admincp/recyclebin">
-                <i class="icon-elements"></i> Thùng rác
-            </a>
-        </li>
-        <li <?php if($param[1]=='logout'){?> class="active" <?php } ?>>
-         	<a class="" title="" href="<?php echo $base_url ?>/admincp/logout">
-         		<i class="icon-elements"></i> Thoát
-         	</a>
+            <a class="" title="" href="<?php echo $base_url ?>/admincp/recyclebin">Thùng rác</a>
         </li>
     </ul>
 </div>

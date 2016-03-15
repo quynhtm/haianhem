@@ -16,7 +16,7 @@
 }
 .pager a {
     background: none repeat scroll 0 0 #f2f2f2;
-    border: 1px solid #ccc;
+    border: 1px solid #3c8dbc;
     color: #444;
     font-family: Arial,Helvetica,sans-serif;
     padding: 4px 8px !important;
@@ -24,17 +24,16 @@
     text-decoration: none !important;
 }
 .pager .pager-current {
-    background: none repeat scroll 0 0 #4ebcd3;
-    border: 1px solid #4ebcd3;
+    background: none repeat scroll 0 0 #3c8dbc;
     color: #fff;
     font-family: Arial,Helvetica,sans-serif;
     font-weight: 700;
     margin: 0 5px !important;
     padding: 4px 8px !important;
-    border: 2px solid #4ebcd3;
+    border: 2px solid #3c8dbc;
 }
 .pager a:hover {
-    background: none repeat scroll 0 0 #4ebcd3;
+    background: none repeat scroll 0 0 #3c8dbc;
     color: #fff;
 }
 /*list lang*/
@@ -249,9 +248,9 @@
 }
 /*admin default*/
 .notification-global{
-    background:#FFF9E9;
-    border-bottom: 1px solid #EEE2BE;
-    border-top: 1px solid #EEE2BE;
+    background:#ecf0f5 ;
+    border-bottom: 1px solid #d7dbe0 ;
+    border-top: 1px solid #d7dbe0;
     color: #444444;
     font-size: 12px;
     line-height: 16px;
