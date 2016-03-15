@@ -1,0 +1,87 @@
+<?php 
+/*
+* @Created by:
+* @Author	: pt.soleil@gmail.com
+* @Date 	: 2013
+* @Version	: 1.0 
+*/
+if(session_id() == ''){
+	session_start();
+}
+function HSSCaptcha_menu(){
+    $items = array();
+  
+	$items['captcha'] = array(
+        'title' => t('Captcha'),
+        'page callback' => 'HSSCaptcha_generate',
+		'access arguments' => array ('HSSCaptcha permissions'),
+		'access callback' => TRUE,
+        'type' => MENU_CALLBACK
+    );
+	$items['captcha/%'] = array(
+        'title' => t('Captcha'),
+        'page callback' => 'HSSCaptcha_check_ajax',
+		'access arguments' => array ('HSSCaptcha permissions'),
+		'access callback' => TRUE,
+        'type' => MENU_CALLBACK
+    );
+	
+    return $items;
+}
+function HSSCaptcha_generate(){
+	module_load_include('inc', 'HSSCaptcha', 'Controller/captcha');
+	$captchaImages = new captchaImages(50,30,4);
+}
+function HSSCaptcha_generate_form(){
+	global $base_url;
+	$showCaptcha= array(
+				    '#type' => 'textfield',
+				    '#title' => t('captcha'),
+				    '#maxlength' => 100,
+					'#default_value' => '',
+					'#description' => t('show captcha.'),
+					'#required' => TRUE,
+					'#prefix' =>'
+						<img src="'.$base_url.'/captcha?rand=<?php echo rand(); ?>" id="security_code" /><br/>
+						<label for="message">Enter the code above here :</label><br/>
+						<input id="security_code" name="security_code" type="text"/><br/>
+						<small>Can not read the image? click <a href="javascript: refreshCaptcha();">here</a> to refresh</small>
+					',					
+	);
+	return $showCaptcha;
+}
+function HSSCaptcha_check_ajax(){
+	global $base_url;
+	$code = $_SESSION['security_code'];
+
+	if(empty($_POST)){
+		drupal_goto($base_url);
+	}
+	
+	$get_code = isset($_POST['code']) ? $_POST['code'] : '';
+	if($get_code!='' && $code == $get_code){
+		echo '1';
+	}else{
+		echo '0';
+	}
+	unset($_SESSION['security_code']);
+	exit();
+}
+function HSSCaptcha_permission(){
+	return array(
+		'HSSCaptcha permissions' => array(
+				'title' => t('Permissions for captcha'),
+				'description' => t('Permissions for captcha'),
+		),
+	);
+}
+function HSSCaptcha_init() {
+	$uri = request_uri();
+	if(preg_match("/(\/admin)/", $uri)==0){
+		$files = array(
+			'View/js/HSSCaptcha.js',
+			'View/css/HSSCaptcha.css',
+		);
+		clsLoader::load('HSSCaptcha', $files);
+	}
+}

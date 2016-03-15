@@ -1,0 +1,60 @@
+<?php
+/*
+* @Created by: HSS
+* @Author	 : nguyenduypt86@gmail.com
+* @Date 	 : 06/2014
+* @Version	 : 1.0
+*/
+function HSSProfiles_menu(){
+    $items = array();
+	$items['dang-ky'] = array(
+        'title' => t('Đăng ký'),
+        'page callback' => 'page_register',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+	$items['dang-ky/kich-hoat-tai-khoan'] = array(
+	    'title' => t('Kích hoạt tài khoản'),
+	    'page callback' => 'page_register_actitive',
+	    'access callback' => TRUE,
+	    'type' => MENU_CALLBACK,
+	);
+   
+    $items['thay-doi-thong-tin-ca-nhan'] = array(
+        'title' => t('Thay đổi thông tin cá nhân'),
+        'page callback' => 'change_info_user',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+    $items['thay-doi-mat-khau'] = array(
+        'title' => t('Thay đổi mật khẩu'),
+        'page callback' => 'change_pass_user',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+    return $items;
+}
+function HSSProfiles_theme() {
+	return array(
+	    'page-register' => array(
+	      'template' => 'View/tpl/page-register'
+	    ),
+        'change-user-info' => array(
+          'template' => 'View/tpl/change-user-info'
+        ),
+        'change-user-pass' => array(
+          'template' => 'View/tpl/change-user-pass'
+        ),
+	);
+}
+function HSSProfiles_init() {
+	$uri = request_uri();
+	if(preg_match("/(\/admin)/", $uri)==0){
+		$files = array(
+			'Controller/HSSProfilesControler.php',
+			'View/js/HSSProfiles.js',
+			'View/css/HSSProfiles.css',
+		);
+		clsLoader::load('HSSProfiles', $files);
+	}
+}

@@ -1,0 +1,102 @@
+<?php
+/*
+* @Created by: HSS
+* @Author	 : nguyenduypt86@gmail.com
+* @Date 	 : 06/2014
+* @Version	 : 1.0
+*/
+function HSSBlock_block_info() {
+	$blocks['block-header'] = array(
+		'info' => t('Block header'),
+		'status'	=> TRUE,
+		'region'	=> 'header',
+		'weight'	=> 0,
+		'visibility' => 1,
+	);
+	$blocks['block-slide'] = array(
+		'info' => t('Block slide'),
+		'status'	=> TRUE,
+		'region'	=> 'content',
+		'weight'	=> 0,
+		'visibility' => 1,
+	);
+	$blocks['block-content-post-product'] = array(
+		'info' => t('Block content post product'),
+		'status'	=> TRUE,
+		'region'	=> 'content',
+		'weight'	=> 0,
+		'visibility' => 1,
+	);
+	$blocks['block-footer'] = array(
+		'info' => t('Block footer'),
+		'status'	=> TRUE,
+		'region'	=> 'footer',
+		'weight'	=> 0,
+		'visibility' => 1,
+	);
+
+   return $blocks;
+}
+function HSSBlock_theme() {
+	return array(
+	    'block-header' => array(
+	      'template' => 'View/tpl/block-header'
+	    ),
+	    'block-slide' => array(
+	      'template' => 'View/tpl/block-slide'
+	    ),
+	    'block-content-post-product' => array(
+	      'template' => 'View/tpl/block-content-post-product'
+	    ),
+		'block-footer' => array(
+	      'template' => 'View/tpl/block-footer'
+	    ),
+	);
+}
+function HSSBlock_block_view($delta='') {
+	$block = array();
+	switch ($delta) {
+		case 'block-header':
+		  $block['subject'] = t('Block header');
+		  $block['content'] = block_header();
+		  break;
+		 case 'block-slide':
+		  $block['subject'] = t('Block slide');
+		  $block['content'] = block_slide();
+		  break;
+		case 'block-content-post-product':
+		  $block['subject'] = t('Block content post product');
+		  $block['content'] = block_content_post_product();
+		  break;
+		case 'block-footer':
+		  $block['subject'] = t('Block footer');
+		  $block['content'] = block_footer();
+		  break;
+	}
+	return $block;
+}
+function HSSBlock_init() {
+	$uri = request_uri();
+	if(preg_match("/(\/admin)/", $uri)==0){
+		$files = array(
+			'Model/HSSBlocksModel.php',
+			'Controller/HSSBlocksController.php',
+
+			'View/bootstrap/js/bootstrap.min.js',
+			'View/bootstrap/css/bootstrap.css',
+
+			'View/js/HSSBlock.js',
+			'View/js/jquery.vote.js',
+			
+			'View/js/slider-magnific/magnific-popup.min.js',
+			'View/js/slider-magnific/magnific-popup.css',
+
+			'View/js/nivoslider/jquery.nivo.slider.js',
+			'View/js/nivoslider/jquery.nivo.slider.css',
+
+			'View/css/HSSBlock.css',
+			'View/css/HSSMedia.css',
+		);
+		clsLoader::load('HSSBlock', $files);
+	}
+}

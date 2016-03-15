@@ -1,0 +1,34 @@
+<?php
+
+if( !defined('PhpThumbFactoryLoaded') ) {
+  require_once dirname(__FILE__).'/libs/phpthumb/ThumbLib.inc.php';
+  define('PhpThumbFactoryLoaded',1);
+}
+if( !class_exists("HSSThumbsImageBase") ){
+  require_once dirname(__FILE__)."/libs/baseSource.php";
+}
+
+ function HSSThumbs_menu(){
+
+	$items["thumbs"] = array(
+		"title" => "Hss Thumbs",
+		"description" => "This is Page Show Position",
+		'page callback' => 'modThumbBase',
+		'access arguments' => array('access protected mod position user'),
+		'type' => MENU_NORMAL_ITEM,
+	);
+
+	return $items;
+}
+
+function modThumbBase($pathImage, $imageWidth=200, $imageHeight=200, $alt='', $isThumb=true, $image_quanlity = 100, $returnPath = false, $id='' ){
+  $imageBases = new HSSThumbsImageBase();
+  $imageThumbBase = $imageBases->renderThumbBaseNormal( $pathImage, $imageWidth, $imageHeight, $alt, $isThumb=true,  $image_quanlity = 100, $returnPath = false, $id );
+  return $imageThumbBase;
+}
+
+function renderThumbCropCenter( $pathImage, $imageWidth=200, $imageHeight=200, $alt='', $isThumb=true, $image_quanlity = 100, $returnPath = false, $id=''){
+ $imageBases = new HSSThumbsImageBase();
+ $imageThumbBase = $imageBases->renderThumbBase( $pathImage, $imageWidth, $imageHeight, $alt, $isThumb=true,  $image_quanlity = 100, $returnPath = false, $id );
+  return $imageThumbBase;
+}

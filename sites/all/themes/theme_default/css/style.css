@@ -1,0 +1,62 @@
+/*reset*/
+*{
+    margin: 0;
+    padding: 0;
+}
+ul, ol, li {
+    list-style: none;
+}
+.clear {
+    clear: both;
+    font-size: 0;
+    line-height: 0;
+}
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+.clearfix {
+    display: inline-block;
+}
+html[xmlns] .clearfix {
+    display: block;
+}
+* html .clearfix {
+    height: 1%;
+}
+img, a img {
+    border: none;
+    outline: medium none;
+}
+a, a:link, a:active, a:visited, a:hover, a:focus {
+    outline: none;
+    text-decoration: none;
+}
+html {
+    height: 100%;
+}
+body{
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    min-height:100%;
+}
+input[type="text"], input[type="password"],select option {
+    text-indent: 5px;
+}
+label, input, button, select, textarea {
+    font-family: Arial,Helvetica,sans-serif;
+}
+input, select, textarea {
+    outline: medium none;
+}
+/*end reset*/
+#header, #content, #footer {
+    clear: both;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+}

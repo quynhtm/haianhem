@@ -1,0 +1,16 @@
+name = default theme
+description = default theme
+core = 7.x
+engine = phptemplate
+version = "7.x"
+project = "default theme"
+datestamp = "1332517846"
+
+regions[header] 			= 	Header
+regions[content] 			= 	Content
+regions[left] 				= 	Left
+regions[right] 				= 	Right
+regions[footer] 			= 	Footer
+
+stylesheets[all][] = css/style.css
+stylesheets[all][] = css/media.css

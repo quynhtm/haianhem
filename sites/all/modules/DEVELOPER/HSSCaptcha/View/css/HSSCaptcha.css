@@ -1,0 +1,26 @@
+﻿.region {
+}
+
+input#security_code {
+    width: 95px!important;
+    float: left;
+}
+span#refresh_code {
+    background: url(../img/refresh.png) no-repeat;
+    cursor: pointer;
+    display: inline-block;
+    height: 16px;
+    margin-left: 10px;
+    position: relative;
+    text-indent: -99999em;
+    top: 4px;
+    width: 16px;
+    float: left;
+}
+img#img_code {
+    border: 1px solid #C7C7C7;
+    float: left;
+    height: 24px;
+    margin-left: 10px;
+    padding-right: 3px;
+}

@@ -1,0 +1,163 @@
+<?php
+
+/**
+ * Implementation of hook_perm().
+ */
+function HSSPopupMessages_permission() {
+	return array(
+    'access popup messages' => array(
+      'title' => t('access popup messages'), 
+      'description' => t('access popup messages.'),
+    ),
+	'administrator popup messages' => array(
+      'title' => t('administer popup messages'), 
+      'description' => t('administrator popup messages.'),
+    ),
+  );
+}
+
+/*
+Implementation of hook_theme
+*/
+function HSSPopupMessages_theme($existing, $type, $theme, $path) {
+  return array(
+    'HSSPopupMessages_content' => array(
+    	'arguments' => array('display' => NULL),
+    ),
+    'HSSPopupMessages' => array(
+    	'template'	=> 'view/HSSPopupMessages',
+    	'arguments' => array('content' => NULL),
+    ),
+  );
+}
+
+/*
+Implementation of hook_theme_registry_alter to add HSSPopupMessages theme function
+*/
+function HSSPopupMessages_theme_registry_alter(&$theme_registry) {
+	$theme_registry['status_messages']['function'] = "theme_HSSPopupMessages";
+}
+
+function theme_HSSPopupMessages($display = NULL) {
+	$output = '';
+	$HSSPopupMessages = HSSPopupMessages_process_visibility();
+ 	$access = user_access('access popup messages');
+	$message = drupal_get_messages($display['display'], FALSE);
+	if ($HSSPopupMessages && $access && !empty($message)) {
+		$disable_autoclose = array_key_exists('error', $message);
+		HSSPopupMessages_add_files($disable_autoclose);
+		$message = theme('HSSPopupMessages_content', $display['display']);
+		// We save the intial output to SESSION so we can put it in <noscript> on page_preprocess
+		$_SESSION['original_messages'] = $message;
+		$message_skin = theme('HSSPopupMessages', array('content' => $message));
+		// We add a special ID so that JavaScript knows what to handle. Changing the ID will break JavaScript handling code.
+		$output = "<div id=\"pop-messages-wrapper\" style=\"display:none;overflow:visible;position:absolute;z-index:9999;\">\n". 
+					$message_skin ."\n</div>\n";
+	}
+	else { $output = theme('HSSPopupMessages_content', $display['display']);}
+	return $output;
+}
+
+function theme_HSSPopupMessages_content($display = NULL) {
+	$output = '';
+	$first = TRUE;
+	foreach (drupal_get_messages(NULL, TRUE) as $type => $messages) {
+		$class = $first ? 'first' : '';
+		$first = FALSE;
+		$output .= "<h2 class=\"messages-label $type\">" . t(drupal_ucfirst($type)) . "</h2>\n";
+		$output .= "<div class='messages'>"."</div>";
+		$output .= "<div class=\"messages $type\">\n";
+		if (count($messages) > 1) {
+			$output .= " <ul>\n";
+			foreach ($messages as $k => $message) {
+		        if ($k == 0) { $output .= "<li class='message-item first'>$message</li>"; }
+		        else if ($k == count($messages) - 1) { $output .= "<li class='message-item last'>$message</li>"; }
+		        else { $output .= "<li class='message-item'>$message</li>"; }
+		    }
+			$output .= " </ul>\n";
+		}
+		else { $output .= $messages[0];	}
+		$output .= "</div>\n";
+	}
+	return $output;
+}
+	
+/*
+Preprocess the default status_messages so we add our template file here
+*/
+function HSSPopupMessages_preprocess_page(&$vars) {
+	if (isset($vars['messages'])) {
+		$settings = HSSPopupMessages_get_settings();
+		// Check if path pop Messages is enabled for this path
+		$HSSPopupMessages = HSSPopupMessages_process_visibility();
+		$access = user_access('access pop messages');
+		if ($HSSPopupMessages && $access) {
+			$message = $vars['messages'];
+			// Here comes the graceful degrade for browsers with JS disabled
+			$vars['messages'] = "<noscript>\n" . $_SESSION['original_messages'] . "\n</noscript>\n";
+			unset($_SESSION['original_messages']);
+			$vars['closure'] .= $message;
+		}
+	}
+}
+
+/*
+Helper function to get the settings
+*/
+function HSSPopupMessages_get_settings() {
+	$settings = array(
+		'position' => 'center', 'vertical' => 0, 'horizontal' => 10, 'fixed'	=> 1,
+  		'width' => '400px', 'autoclose'	=> 0,	'opendelay' => 0.3,	'disable_autoclose' => 0,
+	  	'show_countdown' => 1, 'hover_autoclose' => 1,
+		'popin' => array('effect' => 'fadeIn', 'duration' => 'slow'),
+		'popout' => array('effect' => 'fadeOut', 'duration' => 'slow'),
+	  	'jquery_ui' => array('draggable' => 0, 'resizable' => 0),
+		'extra' => array(
+			'pages' => '',
+			'visibility' => 0,
+		)
+	);
+	return variable_get('HSSPopupMessages', $settings);
+}
+
+/*
+Helper function to check where to popup Messages relative to path
+*/
+function HSSPopupMessages_process_visibility() {
+	$settings = HSSPopupMessages_get_settings();
+	if ($settings['extra']['pages']) {
+		$path = drupal_get_path_alias($_GET['q']);
+		$page_match = drupal_match_path($path, $settings['extra']['pages']);
+		if ($path != $_GET['q']) {
+			$page_match = $page_match || drupal_match_path($_GET['q'], $settings['extra']['pages']);
+		}
+		$page_match = !($settings['extra']['visibility'] xor $page_match);
+	}
+	else { $page_match = TRUE; }	
+	return $page_match;
+}
+
+/*
+Helper function to add required JS and CSS only when required
+*/
+function HSSPopupMessages_add_files($disable_autoclose){
+	$settings = HSSPopupMessages_get_settings();
+	drupal_add_css(drupal_get_path('module', 'HSSPopupMessages') . '/assets/popup_messages.css');
+	drupal_add_js(drupal_get_path('module', 'HSSPopupMessages') . '/assets/script.js');
+	// Remove extra info from JS
+	if (!module_exists('jquery_ui')) { 
+		unset($settings['jquery_ui']); 
+	}
+	else {
+		foreach ($settings['jquery_ui'] as $jquery_ui_setting => $value) {
+			if ($value == 1) {
+				jquery_ui_add(array('ui.' . $jquery_ui_setting));
+			} 
+		}
+	}
+	unset($settings['extra']);
+	if ($disable_autoclose) {
+	  $settings['autoclose'] = 0;
+	}
+	drupal_add_js(array('HSSPopupMessages' => $settings), 'setting');
+}

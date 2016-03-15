@@ -1,0 +1,87 @@
+#messages-default {
+    background: none repeat scroll 0 0 #FFF;
+    border: 2px solid #4073A5;
+    box-shadow: 0 0 3px 1px #373838;
+}
+#messages-default #messages-inner {
+    position: relative;
+    width: 100%}
+#messages-default .messages-label {
+    color: #777877;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    margin-bottom: 3px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    display: none;
+}
+.messages.error {
+    background-image: none!important;
+    background-color: #FFF!important;
+    border-color: #FFF!important;
+    color: red!important;
+}
+.messages a {
+    color: #26B7FB!important;
+}
+#messages-default .body {
+    background-color: #FFF;
+    padding: 5px;
+    position: relative;
+    top: 0;
+}
+#messages-default .footer {
+    border-top: 0x solid #DDD;
+    margin-top: 10px;
+    padding-top: 5px;
+    text-align: right;
+}
+#messages-default a.message-close {
+    background: url(images/iconcloser.png) no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    height: 10px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 10px;
+    z-index: 999;
+}
+#messages-default a.message-close:hover {
+    opacity: .5;
+}
+#messages-default span.message-timer {
+    float: left;
+    line-height: 22px;
+}
+#messages-default .messages {
+    background: none repeat scroll 0 0 #FFF;
+    border: medium none;
+    margin-bottom: 5px;
+    max-height: 400px;
+    overflow: auto;
+    padding-left: 10px!important;
+    text-align: center;
+    font-size: 14px;
+    color: #262626;
+}
+#messages-default .messages a {
+    color: #26B7FB;
+}
+h2.error {
+    background-color: #D77;
+}
+h2.warning {
+    background-color: #F0C020;
+}
+h2.status {
+    background-color: #7D7;
+}
+.messages-inner {
+    position: relative;
+    background: #FFF;
+}
+div.messages {
+    padding: 0 10px 10px 50px!important;
+}

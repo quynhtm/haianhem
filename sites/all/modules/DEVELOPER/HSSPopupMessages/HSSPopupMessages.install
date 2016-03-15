@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * Implementaton of hook_install
+ */
+function HSSPopupMessages_install() {
+  drupal_set_message(t("Messages is installed successfully.<br />Click here to visit the <a href=@href>settings page</a>!", array('@href' => base_path() . 'admin/settings/better-messages')));
+}
+
+/**
+ * Implementaton of hook_uninstall
+ */
+function HSSPopupMessages_uninstall() {
+  db_query("DELETE FROM {variable} WHERE name LIKE 'HSSPopupMessages%'");
+  db_query("DELETE FROM {system} WHERE name = 'HSSPopupMessages'");
+}
+
+function HSSPopupMessages_update_6000() {  
+  // Rename poorly named variables.
+  $settings_new = array(
+    'position' => variable_get('HSSPopupMessages_pos', 'center'), 'vertical' => variable_get('HSSPopupMessages_vertical', 0),
+    'horizontal' => variable_get('HSSPopupMessages_horizontal', 10), 'fixed'  => variable_get('HSSPopupMessages_fixed', 1),
+    'width' => variable_get('HSSPopupMessages_width', '400px'), 'autoclose' => variable_get('HSSPopupMessages_autoclose', 0),
+    'opendelay' => variable_get('HSSPopupMessages_open_delay', 0.3), 'disable_autoclose' => variable_get('HSSPopupMessages_disable_autoclose', 0),
+    'popin' => array('effect' => variable_get('HSSPopupMessages_popin_effect', 'fadeIn'), 'duration' => variable_get('HSSPopupMessages_popin_duration', 'slow')),
+    'popout' => array('effect' => variable_get('HSSPopupMessages_popout_effect', 'fadeOut'), 'duration' => variable_get('HSSPopupMessages_popout_duration', 'slow')),
+    'extra' => array(
+      'pages' => variable_get('HSSPopupMessages_pages', ''),
+      'visibility' => variable_get('HSSPopupMessages_visibility', 0),
+    )
+  );
+  db_query("DELETE FROM {variable} WHERE name LIKE 'HSSPopupMessages_%'");
+  variable_set('HSSPopupMessages', $settings_new);
+  return array();
+}

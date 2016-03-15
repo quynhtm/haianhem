@@ -1,0 +1,16 @@
+.region{}
+.formChangeInfo,
+.formSendRegister{
+    width: 50%;
+    margin:  0 auto;
+}
+.formChangeInfo label span,
+.formSendRegister label span{
+    color: #ff0000;
+}
+.change-info-txt{
+	clear: both;
+	margin-top: 10px;
+	display: inline-block;
+	width: 100%;
+}
