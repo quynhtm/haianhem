@@ -45,7 +45,6 @@ class _Supportonline extends Supportonline{
 			
 		}
 
-
 		$result = $sql->range($rc,$limit)->orderBy('i.id', 'DESC')->execute();
 		$arrItem = (array)$result->fetchAll();
 
