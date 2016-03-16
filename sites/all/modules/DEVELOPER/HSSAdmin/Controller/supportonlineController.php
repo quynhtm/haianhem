@@ -19,10 +19,9 @@ function indexSupportonline(){
 	$dataSearch['category'] = clsAdminLib::getIntParam('category','');
 	$dataSearch['status'] = clsAdminLib::getParam('status','');
 
+
 	$result = $supportOnline->getSearchListItems($dataSearch,$limit,$totalItem,$pager);
 	//clsAdminLib::FunctionDebug($pager);
-	
-
 	$arrOptionsCategory[0] = t("Danh mục gốc");
 	$category->makeListCat(55, 0, $arrOptionsCategory, 50);
 
