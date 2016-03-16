@@ -1,3 +1,4 @@
+
 <div class="search-box">
 	<div class="wrapp-search-box">
 		<div class="search-box-title"><?php echo t('Tìm kiếm bài viết')?>:</div>
@@ -16,7 +17,7 @@
 			<input type="submit" id="btnSearch" class="btnSearch" value="<?php echo t('Tìm kiếm')?>">
 		</form>
 	</div>
-</div>
+</div>abc
 <div class="inner-box">
 	<div class="page-title-box">
 		<div class="wrapper">
