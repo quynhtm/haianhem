@@ -38,8 +38,15 @@ class _Supportonline extends Supportonline{
 			$sql->condition($db_or);
 		}
 		/*end search*/
+		$_page = isset($_GET['page']) ? $_GET['page'] : 0;
+		$rc = 0;
+		if($_page>0){
+			$rc = $limit*$_page;
+			
+		}
 
-		$result = $sql->range(0,$limit)->orderBy('i.id', 'DESC')->execute();
+
+		$result = $sql->range($rc,$limit)->orderBy('i.id', 'DESC')->execute();
 		$arrItem = (array)$result->fetchAll();
 
 		//total item
