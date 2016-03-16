@@ -17,7 +17,7 @@
 			<input type="submit" id="btnSearch" class="btnSearch" value="<?php echo t('Tìm kiếm')?>">
 		</form>
 	</div>
-</div>abc
+</div>
 <div class="inner-box">
 	<div class="page-title-box">
 		<div class="wrapper">
