@@ -18,7 +18,7 @@ function indexSupportonline(){
 	$dataSearch['category'] = clsAdminLib::getIntParam('category','');
 	$dataSearch['status'] = clsAdminLib::getParam('status','');
 
-	$result = $supportOnline->getSearchListItems($dataSearch,1,$totalItem,$pager);
+	$result = $supportOnline->getSearchListItems($dataSearch,2,$totalItem,$pager);
 	//clsAdminLib::FunctionDebug($result); die;
 	
 
