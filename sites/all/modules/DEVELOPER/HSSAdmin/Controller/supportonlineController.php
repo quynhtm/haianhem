@@ -11,7 +11,8 @@ function indexSupportonline(){
 	$supportOnline = new _Supportonline();
 
 	$totalItem = 0;
-	$limit = SITE_RECORD_PER_PAGE;
+	//$limit = SITE_RECORD_PER_PAGE;
+	$limit = 1;
 	$pager = '';
 	$dataSearch = array();
 	$dataSearch['keyword'] = clsAdminLib::getParam('keyword','');
@@ -19,7 +20,7 @@ function indexSupportonline(){
 	$dataSearch['status'] = clsAdminLib::getParam('status','');
 
 	$result = $supportOnline->getSearchListItems($dataSearch,$limit,$totalItem,$pager);
-	//clsAdminLib::FunctionDebug($result); die;
+	//clsAdminLib::FunctionDebug($pager);
 	
 
 	$arrOptionsCategory[0] = t("Danh mục gốc");

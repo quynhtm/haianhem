@@ -1,4 +1,3 @@
-
 <div class="search-box">
 	<div class="wrapp-search-box">
 		<div class="search-box-title"><?php echo t('Tìm kiếm bài viết')?>:</div>
@@ -41,12 +40,12 @@
 					<thead>
 					<tr>
 						<th width="3%" class="text_center">STT</th>
-						<th width="3%" class="text_center">Tiêu đề</th>
-						<th width="35%" class="text_left">Mobile</th>
-						<th width="15%" class="text_center">Skype</th>
+						<th width="10%" class="text_center">Tiêu đề</th>
+						<th width="10%" class="text_left">Mobile</th>
+						<th width="10%" class="text_center">Skype</th>
 
-						<th width="4%" class="text_center">Yahoo</th>
-						<th width="4%" class="text_center">Ngày tạo</th>
+						<th width="10%" class="text_center">Yahoo</th>
+						<th width="10%" class="text_center">Ngày tạo</th>
 						<th width="10%" class="text_center">Vị trí</th>
 
 						<th width="10%" class="text_center">Trạng thái</th>
