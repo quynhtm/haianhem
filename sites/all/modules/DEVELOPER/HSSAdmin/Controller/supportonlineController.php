@@ -21,6 +21,13 @@ function indexSupportonline(){
 
 
 	$result = $supportOnline->getSearchListItems($dataSearch,$limit,$totalItem,$pager);
+
+	/*
+	 * cách dùng phân trang mới
+	$limit = '';
+	$paging = clsAdminLib::getNewPager($limit,CGlobal::$number_pages_show, $page_no, $total_row, CGlobal::$number_per_page,$this->paramSearch);
+	*/
+
 	//clsAdminLib::FunctionDebug($pager);
 	$arrOptionsCategory[0] = t("Danh mục gốc");
 	$category->makeListCat(55, 0, $arrOptionsCategory, 50);
