@@ -65,7 +65,7 @@
 						<td class="text_center text_middle"><?php echo $item->order_no; ?></td>
 						<td class="text_center text_middle">
 							<?php
-								if($row->status==1){
+								if($item->status==1){
 									$status='<span class="bg-status-show">'.t('Hiện').'</span>';
 								}else{
 									$status='<span class="bg-status-hidden">'.t('Ẩn').'</span>';
