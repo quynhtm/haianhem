@@ -19,14 +19,8 @@ function indexSupportonline(){
 	$dataSearch['category'] = clsAdminLib::getIntParam('category','');
 	$dataSearch['status'] = clsAdminLib::getParam('status','');
 
-<<<<<<< HEAD
-=======
-	$result = $supportOnline->getSearchListItems($dataSearch,2,$totalItem,$pager);
-	//clsAdminLib::FunctionDebug($result); die;
-	
->>>>>>> nguyenduy
 
-	$result = $supportOnline->getSearchListItems($dataSearch,$limit,$totalItem,$pager);
+	$result = $supportOnline->getSearchListItems($dataSearch,2,$totalItem,$pager);
 
 	/*
 	 * cách dùng phân trang mới
