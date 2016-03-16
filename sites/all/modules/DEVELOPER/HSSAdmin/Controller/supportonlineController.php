@@ -21,12 +21,14 @@ function indexSupportonline(){
 
 
 	$result = $supportOnline->getSearchListItems($dataSearch,2,$totalItem,$pager);
-
+	
 	/*
 	 * cách dùng phân trang mới
+	 */
 	$limit = '';
-	$paging = clsAdminLib::getNewPager($limit,CGlobal::$number_pages_show, $page_no, $total_row, CGlobal::$number_per_page,$this->paramSearch);
-	*/
+	//$paging = clsAdminLib::getNewPager($limit,CGlobal::$number_pages_show, $page_no, $total_row, CGlobal::$number_per_page,$this->paramSearch);
+	
+	//bug($paging);
 
 	//clsAdminLib::FunctionDebug($pager);
 	$arrOptionsCategory[0] = t("Danh mục gốc");

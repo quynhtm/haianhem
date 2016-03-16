@@ -7,9 +7,9 @@
 */
 class _Supportonline extends Supportonline{
 
-	function getSearchListItems($dataSearch = array(),$limit = SITE_RECORD_PER_PAGE, &$totalItem=0, &$pager=''){
+	function getSearchListItems($dataSearch = array(),$limit = SITE_RECORD_PER_PAGE, &$totalItem=0, &$pager=array()){
 		//field get
-		$sql = db_select($this->table, 'i');
+		$sql = db_select($this->table, 'i')->extend('PagerDefault');
 		$sql->addField('i', 'catid', 'catid');
 		$sql->addField('i', 'id', 'id');
 		$sql->addField('i', 'title', 'title');
@@ -38,15 +38,11 @@ class _Supportonline extends Supportonline{
 			$sql->condition($db_or);
 		}
 		/*end search*/
-
-		$result = $sql->range(0,$limit)->orderBy('i.id', 'DESC')->execute();
+		$result = $sql->limit($limit)->orderBy('i.id', 'DESC')->execute();
 		$arrItem = (array)$result->fetchAll();
+		$pager = array('#theme' => 'pager','#quantity' => 3);
 
-		//total item
-		$totalItem = count($arrItem);
-		//phan trang
-		$pager = array('#theme' => 'pager','#quantity' => SITE_SCROLL_PAGE);
-
+		//$listPage['arrItem'] = $arrItem;
 		return $arrItem;
 	}
 
