@@ -8,7 +8,7 @@
 function indexSupportonline(){
 	global $base_url;
 	$category = new _Category();
-	$supportOnline = new _Supportonline();
+	//$supportOnline = new _Supportonline();
 
 	$totalItem = 0;
 	//$limit = SITE_RECORD_PER_PAGE;
@@ -20,7 +20,7 @@ function indexSupportonline(){
 	$dataSearch['status'] = clsAdminLib::getParam('status','');
 
 
-	$result = $supportOnline->getSearchListItems($dataSearch,2,$totalItem,$pager);
+	$result = _Supportonline::getSearchListItems($dataSearch,2,$totalItem,$pager);
 	
 	/*
 	 * cách dùng phân trang mới

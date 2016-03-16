@@ -6,10 +6,11 @@
 * @Version	 : 1.0
 */
 class _Supportonline extends Supportonline{
-
-	function getSearchListItems($dataSearch = array(),$limit = SITE_RECORD_PER_PAGE, &$totalItem=0, &$pager=array()){
+	static $table_action = 'hss_supportonline';
+	public static function getSearchListItems($dataSearch = array(),$limit = SITE_RECORD_PER_PAGE, &$totalItem=0, &$pager=array()){
 		//field get
-		$sql = db_select($this->table, 'i')->extend('PagerDefault');
+
+		$sql = db_select(self::$table_action, 'i')->extend('PagerDefault');
 		$sql->addField('i', 'catid', 'catid');
 		$sql->addField('i', 'id', 'id');
 		$sql->addField('i', 'title', 'title');

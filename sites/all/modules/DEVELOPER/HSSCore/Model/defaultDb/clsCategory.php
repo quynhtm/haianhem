@@ -85,16 +85,20 @@ class Category extends DbBasic{
 		}
 		return $arrCat;
 	}
-	function getCatNameFromAlias($id=""){
+
+
+	function getCatNameFromAlias($id = 0){
 		$name = "";
-		if($id!=0){
-			$arrCat = $this->getByCond("title", "id='".$id."'", "", "id ASC", "1");
-			foreach($arrCat as $v){
-				$name = $v->title;
+		if((int)$id > 0 ){
+			$arrCat = $this->getOne("title", $id);
+			if(!empty($arrCat)){
+				return $arrCat->title;
 			}
 		}
 		return $name;
 	}
+
+
 	function getCatAliasFromID($id=""){
 		$name = "";
 		if($id!=0){
