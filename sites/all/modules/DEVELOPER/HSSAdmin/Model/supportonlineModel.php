@@ -7,7 +7,50 @@
 */
 class _Supportonline extends Supportonline{
 
-	function listItemPost(){
+	function getSearchListItems($dataSearch = array(),$limit = SITE_RECORD_PER_PAGE, &$totalItem=0, &$pager=''){
+		//field get
+		$sql = db_select($this->table, 'i');
+		$sql->addField('i', 'catid', 'catid');
+		$sql->addField('i', 'id', 'id');
+		$sql->addField('i', 'title', 'title');
+		$sql->addField('i', 'phone', 'phone');
+		$sql->addField('i', 'mobile', 'mobile');
+		$sql->addField('i', 'email', 'email');
+		$sql->addField('i', 'yahoo', 'yahoo');
+		$sql->addField('i', 'skyper', 'skyper');
+		$sql->addField('i', 'created', 'created');
+		$sql->addField('i', 'order_no', 'order_no');
+		$sql->addField('i', 'status', 'status');
+
+		/*search*/
+		if($dataSearch['category'] > 0){
+			$sql->condition('i.catid', $dataSearch['category'], '=');
+		}
+
+		if($dataSearch['status'] != ''){
+			$sql->condition('i.status', $dataSearch['status'], '=');
+		}
+
+		if($dataSearch['keyword'] != ''){
+			$db_or = db_or();
+			$db_or->condition('i.title', '%'.$dataSearch['keyword'].'%', 'LIKE');
+			$db_or->condition('i.title_alias', '%'.$dataSearch['keyword'].'%', 'LIKE');
+			$sql->condition($db_or);
+		}
+		/*end search*/
+
+		$result = $sql->range(0,$limit)->orderBy('i.id', 'DESC')->execute();
+		$arrItem = (array)$result->fetchAll();
+
+		//total item
+		$totalItem = count($arrItem);
+		//phan trang
+		$pager = array('#theme' => 'pager','#quantity' => SITE_SCROLL_PAGE);
+
+		return $arrItem;
+	}
+
+	function listItemPost(&$totalItem){
 		global $base_url;
 
 		$_Category = new Category();

@@ -7,23 +7,32 @@
 */
 function indexSupportonline(){
 	global $base_url;
+	$category = new _Category();
+	$supportOnline = new _Supportonline();
 
-	$_Category = new _Category();
-	$_Supportonline = new _Supportonline();
+	$totalItem = 0;
+	$limit = SITE_RECORD_PER_PAGE;
+	$pager = '';
+	$dataSearch = array();
+	$dataSearch['keyword'] = clsAdminLib::getParam('keyword','');
+	$dataSearch['category'] = clsAdminLib::getIntParam('category','');
+	$dataSearch['status'] = clsAdminLib::getParam('status','');
 
-	$totalItem = $_Supportonline->countItem($_fields="id");
-	$listItem = $_Supportonline->listItemPost();
+	$result = $supportOnline->getSearchListItems($dataSearch,$limit,$totalItem,$pager);
+	//clsAdminLib::FunctionDebug($result); debug
 
 	$arrOptionsCategory[0] = t("Danh mục gốc");
-	$_Category->makeListCat(55, 0, $arrOptionsCategory, 50);
-	$data = array(
-			'title'=>'Quản lý bài viết',
-			'listItem' => $listItem,
-			'totalItem' =>$totalItem,
-			'arrOptionsCategory'=>$arrOptionsCategory,
-	);
+	$category->makeListCat(55, 0, $arrOptionsCategory, 50);
 
-	$view = theme('supportonline',$data);
+	//out put to thême
+	$view = theme('listSupportOnline',array(
+								'title'=>'Quản lý Nick Support',
+								'result' => $result,
+								'dataSearch' => $dataSearch,
+								'base_url' => $base_url,
+								'totalItem' =>$totalItem,
+								'pager' =>$pager,
+								'arrOptionsCategory'=>$arrOptionsCategory));
 	return $view;
 }
 

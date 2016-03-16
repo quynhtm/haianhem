@@ -170,12 +170,17 @@ function HSSAdmin_theme() {
         'info-form' => array(
             'template' => 'View/tpl/info/info-form'
         ),
+
         'supportonline' => array(
+            'template' => 'View/tpl/supportonline/listSupportOnline'
+        ),
+		'supportonline' => array(
             'template' => 'View/tpl/supportonline/supportonline'
         ),
         'supportonline-form' => array(
             'template' => 'View/tpl/supportonline/supportonline-form'
         ),
+
         'users' => array(
             'template' => 'View/tpl/users/users'
         ),
