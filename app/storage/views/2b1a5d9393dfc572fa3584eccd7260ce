@@ -1,0 +1,150 @@
+<div class="main-content-inner">
+    <div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="<?php echo URL::route('admin.dashboard'); ?>">Home</a>
+            </li>
+            <li class="active">Đơn hàng</li>
+        </ul><!-- /.breadcrumb -->
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <div class="panel panel-info">
+                    <?php echo Form::open(array('method' => 'GET', 'role'=>'form')); ?>
+
+                    <div class="panel-body">
+                        <div class="form-group col-lg-3">
+                            <label for="order_product_name">Tên sản phẩm</label>
+                            <input type="text" class="form-control input-sm" id="order_product_name" name="order_product_name" placeholder="Tên sản phẩm" <?php if(isset($search['order_product_name'])): ?>value="<?php echo $search['order_product_name']; ?>"<?php endif; ?>>
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label for="order_customer_name">Tên khách hàng</label>
+                            <input type="text" class="form-control input-sm" id="order_customer_name" name="order_customer_name" placeholder="Tên khách hàng" <?php if(isset($search['order_customer_name'])): ?>value="<?php echo $search['order_customer_name']; ?>"<?php endif; ?>>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="order_customer_phone">SĐT khách hàng</label>
+                            <input type="text" class="form-control input-sm" id="order_customer_phone" name="order_customer_phone" placeholder="SĐT khách hàng" <?php if(isset($search['order_customer_phone'])): ?>value="<?php echo $search['order_customer_phone']; ?>"<?php endif; ?>>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="order_customer_email">Email khách hàng</label>
+                            <input type="text" class="form-control input-sm" id="order_customer_email" name="order_customer_email" placeholder="Email khách hàng" <?php if(isset($search['order_customer_email'])): ?>value="<?php echo $search['order_customer_email']; ?>"<?php endif; ?>>
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label for="name" class="control-label">Đặt hàng từ ngày </label>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="time_start_time" name="time_start_time"  data-date-format="dd-mm-yyyy" value="<?php if(isset($data['time_start_time'])): ?><?php echo date('d-m-Y',$data['time_start_time']); ?><?php endif; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="name" class="control-label">đến ngày</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="time_end_time" name="time_end_time"  data-date-format="dd-mm-yyyy" value="<?php if(isset($data['time_end_time'])): ?><?php echo date('d-m-Y',$data['time_end_time']); ?><?php endif; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="order_user_shop_id">ĐH của Shop</label>
+                            <select name="order_user_shop_id" id="order_user_shop_id" class="form-control input-sm chosen-select-deselect" tabindex="12" data-placeholder="Chọn tên shop">
+                                <option value=""></option>
+                                <?php foreach($arrShop as $shop_id => $shopName): ?>
+                                    <option value="<?php echo $shop_id; ?>" <?php if($search['order_user_shop_id'] == $shop_id): ?> selected="selected" <?php endif; ?>><?php echo $shopName; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="order_status">Trạng thái</label>
+                            <select name="order_status" id="order_status" class="form-control input-sm">
+                                <?php echo $optionStatus; ?>
+
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-12 text-right">
+                            <button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-search"></i> Tìm kiếm</button>
+                        </div>
+                    </div>
+                    <?php echo Form::close(); ?>
+
+                </div>
+                <?php if(sizeof($data) > 0): ?>
+                    <div class="span clearfix"> <?php if($total >0): ?> Có tổng số <b><?php echo $total; ?></b> đơn hàng <?php endif; ?> </div>
+                    <br>
+                    <table class="table table-bordered table-hover">
+                        <thead class="thin-border-bottom">
+                        <tr class="">
+                            <th width="5%" class="text-center">STT</th>
+                            <th width="30%">Thông tin sản phẩm</th>
+                            <th width="30%" class="text-left">Thông tin khách hàng</th>
+                            <th width="8%" class="text-center">Ngày đặt</th>
+                            <th width="12%" class="text-center">Tình trạng ĐH</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($data as $key => $item): ?>
+                            <tr>
+                                <td class="text-center text-middle"><?php echo $stt + $key+1; ?></td>
+                                <td>[<b><?php echo $item->order_product_id; ?></b>]
+                                    <a href="#" target="_blank" title="Chi tiết sản phẩm">
+                                         <?php echo $item->order_product_name; ?>
+
+                                    </a>
+                                    <br/>Giá bán: <b class="red"><?php echo FunctionLib::numberFormat($item->order_product_price_sell); ?> đ</b>
+                                    <br/>SL: <b><?php echo $item->order_quality_buy; ?></b> sản phẩm
+                                </td>
+                                <td>
+                                    <?php if($item->order_customer_name != ''): ?>Tên KH: <b><?php echo $item->order_customer_name; ?></b><br/><?php endif; ?>
+                                    <?php if($item->order_customer_phone != ''): ?>Phone: <?php echo $item->order_customer_phone; ?><br/><?php endif; ?>
+                                    <?php if($item->order_customer_email != ''): ?>Email: <?php echo $item->order_customer_email; ?><br/><?php endif; ?>
+                                    <?php if($item->order_customer_address != ''): ?>Địa chỉ: <?php echo $item->order_customer_address; ?><br/><?php endif; ?>
+                                    <?php if($item->order_customer_note != ''): ?><span class="red">**Ghi chú: <?php echo $item->order_customer_note; ?></span><?php endif; ?>
+                                </td>
+                                <td class="text-center text-middle"><?php echo date ('d-m-Y H:i:s',$item->order_time); ?></td>
+                                <td class="text-center text-middle">
+                                    <?php if(isset($arrStatus[$item->order_status])): ?><?php echo $arrStatus[$item->order_status]; ?><?php else: ?> --- <?php endif; ?>
+                                    <?php if($is_root): ?>
+                                         <br/><a href="javascript:void(0);" onclick="Admin.deleteItem(<?php echo $item->order_id; ?>,8)" title="Xóa Item"><i class="fa fa-trash fa-2x"></i></a>
+                                     <?php endif; ?>
+                                    <span class="img_loading" id="img_loading_<?php echo $item->order_id; ?>"></span>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <div class="text-right">
+                        <?php echo $paging; ?>
+
+                    </div>
+                <?php else: ?>
+                <div class="alert">
+                    Không có dữ liệu
+                </div>
+                <?php endif; ?>
+                            <!-- PAGE CONTENT ENDS -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.page-content -->
+</div>
+
+<script>
+    $(document).ready(function(){
+        var checkin = $('#time_start_time').datepicker({ });
+        var checkout = $('#time_end_time').datepicker({ });
+    });
+    //tim kiem cho shop
+    var config = {
+        '.chosen-select'           : {},
+        '.chosen-select-deselect'  : {allow_single_deselect:true},
+        '.chosen-select-no-single' : {disable_search_threshold:10},
+        '.chosen-select-no-results': {no_results_text:'Không có kết quả'}
+        //      '.chosen-select-width'     : {width:"95%"}
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+</script>

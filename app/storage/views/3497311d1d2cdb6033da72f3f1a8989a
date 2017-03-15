@@ -1,0 +1,134 @@
+<div class="main-content-inner">
+    <div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="<?php echo URL::route('admin.dashboard'); ?>">Home</a>
+            </li>
+            <li class="active">Danh mục sản phẩm</li>
+        </ul><!-- /.breadcrumb -->
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <div class="panel panel-info">
+                    <?php echo Form::open(array('method' => 'GET', 'role'=>'form')); ?>
+
+                    <div class="panel-body">
+                        <div class="form-group col-lg-3">
+                            <label for="department_name">Tên khoa - trung tâm</label>
+                            <input type="text" class="form-control input-sm" id="department_name" name="department_name" placeholder="Tên khoa - trung tâm" <?php if(isset($search['department_name']) && $search['department_name'] != ''): ?>value="<?php echo $search['department_name']; ?>"<?php endif; ?>>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="department_status">Kiểu</label>
+                            <select name="department_type" id="department_type" class="form-control input-sm">
+                                <?php echo $optionTypeDepart; ?>
+
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="department_status">Giao diện hiển thị</label>
+                            <select name="department_layouts" id="department_layouts" class="form-control input-sm">
+                                <?php echo $optionLayoutsDepart; ?>
+
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="department_status">Trạng thái</label>
+                            <select name="department_status" id="department_status" class="form-control input-sm">
+                                <?php echo $optionStatus; ?>
+
+                            </select>
+                        </div>
+                        
+                    </div>
+                    <div class="panel-footer text-right">
+                        <?php if($is_root || $permission_full ==1 || $permission_create == 1): ?>
+                        <span class="">
+                            <a class="btn btn-danger btn-sm" href="<?php echo URL::route('admin.department_edit'); ?>">
+                                <i class="ace-icon fa fa-plus-circle"></i>
+                                Thêm mới
+                            </a>
+                        </span>
+                        <?php endif; ?>
+                        <span class="">
+                            <button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-search"></i> Tìm kiếm</button>
+                        </span>
+                    </div>
+                    <?php echo Form::close(); ?>
+
+                </div>
+                <?php if(sizeof($data) > 0): ?>
+                    <div class="span clearfix"> <?php if($total >0): ?> Có tổng số <b><?php echo $total; ?></b> khoa - trung tâm <?php endif; ?> </div>
+                    <br>
+                    <table class="table table-bordered table-hover">
+                        <thead class="thin-border-bottom">
+                        <tr class="">
+                            <th width="2%"class="text-center">STT</th>
+                            <!--<th width="1%" class="text-center"><input type="checkbox" id="checkAll"/></th>-->
+                            <th width="25%" class="td_list">Tên khoa - trung tâm</th>
+                            <th width="20%" class="td_list">Kiểu</th>
+                            <th width="20%" class="td_list">Giao diện</th>
+                            <th width="5%" class="text-center">Status</th>
+                            <th width="10%" class="text-center">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($data as $key => $item): ?>
+                            <tr>
+                                <td class="text-center"><?php echo $key+1; ?></td>
+                                <!---<td class="text-center"><input class="check" type="checkbox" name="checkItems[]" id="sys_checkItems" value="<?php echo $item['department_id']; ?>"></td>-->
+                                <td>
+                                    [<b><?php echo $item['department_id']; ?></b>] <?php echo $item['department_name']; ?>
+
+                                </td>
+                                <td><?php if(isset($arrTypeDepart[$item['department_type']])): ?><?php echo $arrTypeDepart[$item['department_type']]; ?> <?php endif; ?> </td>
+                                <td><?php if(isset($arrLayoutsDepart[$item['department_layouts']])): ?><?php echo $arrLayoutsDepart[$item['department_layouts']]; ?> <?php endif; ?> </td>
+
+                                <td class="text-center">
+                                    <?php if($item['department_status'] == 1): ?>
+                                        <a href="javascript:void(0);" onclick="Admin.updateStatusItem(<?php echo $item['department_id']; ?>,<?php echo $item['department_status']; ?>,2)"title="Hiện"><i class="fa fa-check fa-2x"></i></a>
+                                    <?php else: ?>
+                                        <a href="javascript:void(0);" onclick="Admin.updateStatusItem(<?php echo $item['department_id']; ?>,<?php echo $item['department_status']; ?>,2)"style="color: red" title="Ẩn"><i class="fa fa-close fa-2x"></i></a>
+                                    <?php endif; ?>
+                                    <span class="img_loading" id="img_loading_<?php echo $item['department_id']; ?>"></span>
+                                </td>
+
+                                <td class="text-center">
+                                    <?php if($is_root || $permission_full ==1|| $permission_edit ==1  ): ?>
+                                        <a href="<?php echo URL::route('admin.department_edit',array('id' => $item['department_id'])); ?>" title="Sửa item"><i class="fa fa-edit fa-2x"></i></a>
+                                    <?php endif; ?>
+                                    <?php if($is_root): ?>
+                                       &nbsp;&nbsp;&nbsp;
+                                       <a href="javascript:void(0);" onclick="Admin.deleteItem(<?php echo $item['department_id']; ?>,10)" title="Xóa Item"><i class="fa fa-trash fa-2x"></i></a>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <div class="text-right">
+                        <?php echo $paging; ?>
+
+                    </div>
+                <?php else: ?>
+                    <div class="alert">
+                        Không có dữ liệu
+                    </div>
+                <?php endif; ?>
+                            <!-- PAGE CONTENT ENDS -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.page-content -->
+</div>
+<script type="text/javascript" xmlns="http://www.w3.org/1999/html">
+    $(document).ready(function() {
+        $("#checkAll").click(function () {
+            $(".check").prop('checked', $(this).prop('checked'));
+        });
+    });
+</script>

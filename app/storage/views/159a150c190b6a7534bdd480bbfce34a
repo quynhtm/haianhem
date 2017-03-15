@@ -1,0 +1,91 @@
+<div class="main-content-inner">
+    <div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="<?php echo URL::route('admin.dashboard'); ?>">Home</a>
+            </li>
+            <li><a href="<?php echo URL::route('admin.typeSettingView'); ?>"> Danh sách Type setting</a></li>
+            <li class="active"><?php if($id > 0): ?>Cập nhật Type setting <?php else: ?> Tạo mới Type setting <?php endif; ?></li>
+        </ul><!-- /.breadcrumb -->
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <?php echo Form::open(array('role'=>'form','files' => true)); ?>
+
+                <?php if(isset($error)): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php foreach($error as $itmError): ?>
+                            <p><?php echo $itmError; ?></p>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+
+                <div style="float: left; width: 50%">
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <label for="name" class="control-label">Tên type<span class="red"> (*) </span></label>
+                            <input type="text" id="type_title" name="type_title"  class="form-control input-sm" value="<?php if(isset($data['type_title'])): ?><?php echo $data['type_title']; ?><?php endif; ?>">
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <label for="name" class="control-label">Thuộc nhóm</label>
+                            <input type="text" <?php if($id > 0 && isset($data['type_group']) && $data['type_group'] !=''): ?> readonly <?php endif; ?> id="type_group" name="type_group"  class="form-control input-sm" value="<?php if(isset($data['type_group'])): ?><?php echo $data['type_group']; ?><?php endif; ?>">
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <label for="name" class="control-label">Key word</label>
+                            <input type="text" <?php if($id > 0 && isset($data['type_keyword']) && $data['type_keyword'] !=''): ?> readonly <?php endif; ?> id="type_keyword" name="type_keyword"  class="form-control input-sm" value="<?php if(isset($data['type_keyword'])): ?><?php echo $data['type_keyword']; ?><?php endif; ?>">
+                        </div>
+                    </div>
+
+
+                    <div class="clearfix"></div>
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <label for="name" class="control-label">Thông tin thêm</label>
+                            <input type="text" id="type_infor" name="type_infor"  class="form-control input-sm" value="<?php if(isset($data['type_infor'])): ?><?php echo $data['type_infor']; ?><?php endif; ?>">
+                        </div>
+                    </div>
+
+
+                    <div class="clearfix"></div>
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <label for="name" class="control-label">Trạng thái</label>
+                            <select name="type_status" id="type_status" class="form-control input-sm">
+                                <?php echo $optionStatus; ?>
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            <label for="name" class="control-label">Vị trí hiển thị</label>
+                            <input type="text" placeholder="Vị trí hiển thị" id="type_order" name="type_order"  class="form-control input-sm" value="<?php if(isset($data['type_order'])): ?><?php echo $data['type_order']; ?><?php endif; ?>">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-sm-12 text-left">
+                        <a class="btn btn-warning" href="<?php echo URL::route('admin.typeSettingView'); ?>"><i class="fa fa-reply"></i> Trở lại</a>
+                        <button  class="btn btn-primary"><i class="glyphicon glyphicon-floppy-saved"></i> Lưu lại</button>
+                    </div>
+                    <input type="hidden" id="id_hiden" name="id_hiden" value="<?php echo $id; ?>"/>
+                </div>
+                <?php echo Form::close(); ?>
+
+            </div>
+        </div>
+    </div>
+</div>

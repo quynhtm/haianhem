@@ -1,0 +1,117 @@
+<div class="main-content-inner">
+    <div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="<?php echo URL::route('admin.dashboard'); ?>">Home</a>
+            </li>
+            <li class="active">Danh sách nhóm quyền</li>
+        </ul><!-- /.breadcrumb -->
+    </div>
+
+    <div class="page-content">
+        <?php /*<div class="page-header">*/ ?>
+        <?php /*<h1>*/ ?>
+        <?php /*<small>*/ ?>
+        <?php /*Danh sách khách hàng*/ ?>
+        <?php /*</small>*/ ?>
+        <?php /*</h1>*/ ?>
+        <?php /*</div><!-- /.page-header -->*/ ?>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <div class="panel panel-info">
+                    <?php echo Form::open(array('method' => 'GET', 'role'=>'form')); ?>
+
+                    <div class="panel-body">
+                        <div class="form-group col-lg-3">
+                            <label for="group_user_name"><i>Tên nhóm</i></label>
+                            <input type="text" class="form-control input-sm" id="group_user_name" name="group_user_name" placeholder="Nhóm người dùng" <?php if(isset($dataSearch['group_user_name']) && $dataSearch['group_user_name'] != ''): ?>value="<?php echo $dataSearch['group_user_name']; ?>"<?php endif; ?>>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="group_user_status"><i>Trạng thái</i></label>
+                            <select name="group_user_status" id="group_user_status" class="form-control input-sm">
+                                <?php foreach($arrStatus as $k => $v): ?>
+                                    <option value="<?php echo $k; ?>" <?php if($dataSearch['group_user_status'] == $k): ?> selected="selected" <?php endif; ?>><?php echo $v; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="panel-footer text-right">
+                        <span class="">
+                            <a class="btn btn-danger btn-sm" href="<?php echo URL::route('admin.groupUser_create'); ?>">
+                                <i class="ace-icon fa fa-plus-circle"></i>
+                                Thêm mới
+                            </a>
+                        </span>
+                        <span class="">
+                            <button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-search"></i> Tìm kiếm</button>
+                        </span>
+                    </div>
+                    <?php echo Form::close(); ?>
+
+                </div>
+                <?php if(sizeof($data) > 0): ?>
+                    <div class="span clearfix"> <?php if($total >0): ?> Có tổng số <b><?php echo $total; ?></b> nhóm quyền <?php endif; ?> </div>
+                    <br>
+                    <table class="table-hover table table-bordered">
+                        <thead class="thin-border-bottom">
+                        <tr class="">
+                            <th width="10%" class="text-center">STT</th>
+                            <th width="20%" class="">Tên nhóm</th>
+                            <th width="50%">Danh sách quyền</th>
+                            <th width="10%" class="text-center">Thao tác</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($data as $key => $item): ?>
+                            <tr>
+                                <td class="text-center"><?php echo $start + $key+1; ?></td>
+                                <td>
+                                    <?php echo $item['group_user_name']; ?>
+
+                                </td>
+                                <td>
+                                    <?php if(!empty($item['permissions'])): ?>
+                                        <?php foreach($item['permissions'] as $permission): ?>
+                                            <div class="checkbox disabled">
+                                                <label title="<?php echo $permission->permission_name; ?>">
+                                                    <input type="checkbox" value="" disabled checked="checked">
+                                                    <?php echo $permission->permission_name; ?>
+
+                                                </label>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php if($is_root || $permission_edit || $permission_view): ?>
+                                        <a href="<?php echo URL::route('admin.groupUser_edit',array('id' => $item['group_user_id'])); ?>" class="btn btn-xs btn-primary" data-content="Sửa nhóm" data-placement="bottom" data-trigger="hover" data-rel="popover">
+                                            <i class="ace-icon fa fa-edit bigger-120"></i>
+                                        </a>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <div class="text-right">
+                        <?php echo $paging; ?>
+
+                    </div>
+                <?php else: ?>
+                    <div class="alert">
+                        Không có dữ liệu
+                    </div>
+                <?php endif; ?>
+                            <!-- PAGE CONTENT ENDS -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.page-content -->
+</div>
+<script type="text/javascript">
+    $('[data-rel=popover]').popover({container: 'body'});
+</script>

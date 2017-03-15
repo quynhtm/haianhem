@@ -1,0 +1,155 @@
+<div class="main-content-inner">
+    <div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="<?php echo URL::route('admin.dashboard'); ?>">Home</a>
+            </li>
+            <li class="active">Quản lý banner quảng cáo</li>
+        </ul><!-- /.breadcrumb -->
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <div class="panel panel-info">
+                    <?php echo Form::open(array('method' => 'GET', 'role'=>'form')); ?>
+
+                    <div class="panel-body">
+                        <div class="form-group col-lg-3">
+                            <label for="banner_name">Tên banner</label>
+                            <input type="text" class="form-control input-sm" id="banner_name" name="banner_name" placeholder="Tiêu đề banner" <?php if(isset($search['banner_name']) && $search['banner_name'] != ''): ?>value="<?php echo $search['banner_name']; ?>"<?php endif; ?>>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="banner_page">Thuộc page</label>
+                            <select name="banner_page" id="banner_page" class="form-control input-sm">
+                                <?php echo $optionPage; ?>
+
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="category_status">Trạng thái</label>
+                            <select name="banner_status" id="banner_status" class="form-control input-sm">
+                                <?php echo $optionStatus; ?>
+
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="banner_type">Loại</label>
+                            <select name="banner_type" id="banner_type" class="form-control input-sm">
+                                <?php echo $optionType; ?>
+
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3" style="display: none">
+                            <label for="category_status">Vị trí hiển thị</label>
+                            <select name="banner_position" id="banner_position" class="form-control input-sm">
+                                <?php echo $optionPosition; ?>
+
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-12 text-right">
+                            <?php if($is_root || $permission_full ==1 || $permission_create == 1): ?>
+                                <a class="btn btn-danger btn-sm" href="<?php echo URL::route('admin.bannerEdit'); ?>">
+                                    <i class="ace-icon fa fa-plus-circle"></i>
+                                    Thêm mới
+                                </a>
+                            <?php endif; ?>
+                            <button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-search"></i> Tìm kiếm</button>
+                        </div>
+                    </div>
+                    <?php echo Form::close(); ?>
+
+                </div>
+                <?php if($data && sizeof($data) > 0): ?>
+                    <div class="span clearfix"> <?php if($total >0): ?> Có tổng số <b><?php echo $total; ?></b> item <?php endif; ?> </div>
+                    <br>
+                    <table class="table table-bordered table-hover">
+                        <thead class="thin-border-bottom">
+                        <tr class="">
+                            <th width="2%" class="text-center">TT</th>
+                            <th width="10%" class="text-center">Ảnh</th>
+                            <th width="25%">Tên banner</th>
+                            <th width="15%">Thuộc page</th>
+                            <th width="10%">Thông tin banner</th>
+                            <th width="10%" class="text-center">Ngày chạy</th>
+                            <th width="10%" class="text-center">Thao tác</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($data as $key => $item): ?>
+                            <tr>
+                                <td class="text-center text-middle"><?php echo $stt + $key+1; ?></td>
+                                <td class="text-center text-middle">
+                                    <img src="<?php echo ThumbImg::getImageThumb(CGlobal::FOLDER_BANNER, $item->banner_id, $item->banner_image, CGlobal::sizeImage_100); ?>">
+                                    <?php if($item->banner_parent_id > 0): ?><br/>
+                                        <a href="<?php echo URL::route('admin.bannerEdit',array('id' => $item->banner_id)); ?>" title="Xem banner gốc" target="_blank">
+                                            <b>Banner cha: <?php echo $item->banner_parent_id; ?> </b>
+                                        </a>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    [<b><?php echo $item->banner_id; ?></b>] <?php echo $item->banner_name; ?>
+
+                                    <br/>C: <?php echo date('d-m-Y h:i',$item->banner_create_time); ?>
+
+                                   <?php if($item->banner_update_time > 0): ?><br/>U: <?php echo date('d-m-Y h:i',$item->banner_update_time); ?><?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php if(isset($arrPage[$item->banner_page])): ?><?php echo $arrPage[$item->banner_page]; ?><?php else: ?> ---- <?php endif; ?>
+                                </td>
+                                <td>
+                                    <!--<?php if($item->banner_position > 0): ?><?php echo $arrPosition[$item->banner_position]; ?> <br/><?php endif; ?> -->
+                                    <?php if(isset($arrTypeBanner[$item->banner_type])): ?><?php echo $arrTypeBanner[$item->banner_type]; ?> <br/> <?php endif; ?>
+                                    <?php if($item->banner_order > 0): ?>Thứ tự: <?php echo $item->banner_order; ?> <br/><?php endif; ?>
+                                    <?php if($item->banner_is_rel == 1): ?>Follow <?php else: ?> Nofollow <?php endif; ?>
+                                </td>
+                                <td class="text-center text-middle">
+                                    <?php if($item->banner_is_run_time == CGlobal::BANNER_IS_RUN_TIME): ?>
+                                        S:<?php echo date('d-m-Y h:i',$item->banner_start_time); ?>
+
+                                        <br/>E:<?php echo date('d-m-Y h:i',$item->banner_end_time); ?>
+
+                                    <?php else: ?>
+                                        Không giới hạn
+                                    <?php endif; ?>
+                                </td>
+                                <td class="text-center text-middle">
+                                    <?php if($is_root || $permission_full ==1|| $permission_edit ==1  ): ?>
+                                        <a href="<?php echo URL::route('admin.bannerEdit',array('id' => $item->banner_id)); ?>" title="Sửa item"><i class="fa fa-edit fa-2x"></i></a>
+                                    <?php endif; ?>
+                                    <?php if($is_root || $permission_full ==1|| $permission_edit ==1  ): ?>
+                                        &nbsp;&nbsp;&nbsp;<a href="<?php echo URL::route('admin.bannerCopy',array('id' => $item->banner_id)); ?>" title="Copy item" target="_blank"><i class="fa fa-files-o fa-2x"></i></a>
+                                    <?php endif; ?>
+                                        <br/>
+                                    <?php if($item->banner_status  == CGlobal::status_show): ?>
+                                        <a href="javascript:void(0);" title="Hiện"><i class="fa fa-check fa-2x"></i></a>
+                                    <?php else: ?>
+                                        <a href="javascript:void(0);" style="color: red" title="Ẩn"><i class="fa fa-close fa-2x"></i></a>
+                                    <?php endif; ?>
+                                    <?php if($is_root || $permission_full ==1 || $permission_delete == 1): ?>
+                                        &nbsp;&nbsp;&nbsp; <a href="javascript:void(0);" onclick="Admin.deleteItem(<?php echo $item->banner_id; ?>,3)" title="Xóa Item"><i class="fa fa-trash fa-2x"></i></a>
+                                    <?php endif; ?>
+                                    <span class="img_loading" id="img_loading_<?php echo $item->banner_id; ?>"></span>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <div class="text-right">
+                        <?php echo $paging; ?>
+
+                    </div>
+                <?php else: ?>
+                    <div class="alert">
+                        Không có dữ liệu
+                    </div>
+                <?php endif; ?>
+                            <!-- PAGE CONTENT ENDS -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.page-content -->
+</div>

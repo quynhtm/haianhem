@@ -1,0 +1,114 @@
+<div class="main-content-inner">
+    <div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="<?php echo URL::route('admin.dashboard'); ?>">Home</a>
+            </li>
+            <li class="active">Quản lý tin tức</li>
+        </ul><!-- /.breadcrumb -->
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <div class="panel panel-info">
+                    <?php echo Form::open(array('method' => 'GET', 'role'=>'form')); ?>
+
+                    <div class="panel-body">
+                        <div class="form-group col-lg-3">
+                            <label for="news_title">Tên danh mục</label>
+                            <input type="text" class="form-control input-sm" id="news_title" name="news_title" placeholder="Tiêu đề tin tức" <?php if(isset($search['news_title']) && $search['news_title'] != ''): ?>value="<?php echo $search['news_title']; ?>"<?php endif; ?>>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="category_status">Trạng thái</label>
+                            <select name="news_status" id="news_status" class="form-control input-sm">
+                                <?php echo $optionStatus; ?>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="panel-footer text-right">
+                        <?php if($is_root || $permission_full ==1 || $permission_create == 1): ?>
+                        <span class="">
+                            <a class="btn btn-danger btn-sm" href="<?php echo URL::route('admin.newsEdit'); ?>">
+                                <i class="ace-icon fa fa-plus-circle"></i>
+                                Thêm mới
+                            </a>
+                        </span>
+                        <?php endif; ?>
+                        <span class="">
+                            <button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-search"></i> Tìm kiếm</button>
+                        </span>
+                    </div>
+                    <?php echo Form::close(); ?>
+
+                </div>
+                <?php if(sizeof($data) > 0): ?>
+                    <div class="span clearfix"> <?php if($total >0): ?> Có tổng số <b><?php echo $total; ?></b> item <?php endif; ?> </div>
+                    <br>
+                    <table class="table table-bordered table-hover">
+                        <thead class="thin-border-bottom">
+                        <tr class="">
+                            <th width="2%" class="text-center">TT</th>
+                            <th width="8%" class="text-center">Ảnh</th>
+                            <th width="435">Tên bài viết</th>
+                            <th width="18%">Danh mục tin</th>
+                            <th width="18%">Thuộc khoa - trung tâm</th>
+                            <th width="8%" class="text-center">Trạng thái</th>
+                            <th width="10%" class="text-center">Thao tác</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($data as $key => $item): ?>
+                            <tr>
+                                <td class="text-center"><?php echo $stt + $key+1; ?></td>
+                                <td class="text-center">
+                                   <?php if($item->news_image != ''): ?>
+                                    <img src="<?php echo ThumbImg::getImageThumb(CGlobal::FOLDER_NEWS, $item->news_id, $item->news_image, CGlobal::sizeImage_100,  '', true, CGlobal::type_thumb_image_banner, false); ?>">
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    [<b><?php echo $item['news_id']; ?></b>]<a href="#" target="_blank"><?php echo $item['news_title']; ?></a>
+                                </td>
+                                <td><?php if(isset($arrCategoryNew[$item['news_category_id']])): ?><?php echo $arrCategoryNew[$item['news_category_id']]; ?><?php else: ?> --- <?php endif; ?></td>
+                                <td><?php if(isset($arrDepart[$item['news_depart_id']])): ?><?php echo $arrDepart[$item['news_depart_id']]; ?><?php else: ?> --- <?php endif; ?></td>
+                                <td class="text-center">
+                                    <?php if($item['news_status'] == 1): ?>
+                                        <a href="javascript:void(0);" onclick="Admin.updateStatusItem(<?php echo $item['news_id']; ?>,<?php echo $item['news_status']; ?>,5)"title="Hiện"><i class="fa fa-check fa-2x"></i></a>
+                                    <?php else: ?>
+                                        <a href="javascript:void(0);" onclick="Admin.updateStatusItem(<?php echo $item['news_id']; ?>,<?php echo $item['news_status']; ?>,5)"style="color: red" title="Ẩn"><i class="fa fa-close fa-2x"></i></a>
+                                    <?php endif; ?>
+                                    <span class="img_loading" id="img_loading_<?php echo $item['news_id']; ?>"></span>
+                                </td>
+                                <td class="text-center">
+                                    <?php if($is_root || $permission_full ==1|| $permission_edit ==1  ): ?>
+                                        <a href="<?php echo URL::route('admin.newsEdit',array('id' => $item['news_id'])); ?>" title="Sửa item"><i class="fa fa-edit fa-2x"></i></a>
+                                    <?php endif; ?>
+                                    <?php if($is_root || $permission_full ==1 || $permission_delete == 1): ?>
+                                       &nbsp;&nbsp;&nbsp;
+                                       <a href="javascript:void(0);" onclick="Admin.deleteItem(<?php echo $item['news_id']; ?>,1)" title="Xóa Item"><i class="fa fa-trash fa-2x"></i></a>
+                                    <?php endif; ?>
+                                    <span class="img_loading" id="img_loading_<?php echo $item['news_id']; ?>"></span>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <div class="text-right">
+                        <?php echo $paging; ?>
+
+                    </div>
+                <?php else: ?>
+                    <div class="alert">
+                        Không có dữ liệu
+                    </div>
+                <?php endif; ?>
+                            <!-- PAGE CONTENT ENDS -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.page-content -->
+</div>

@@ -1,0 +1,66 @@
+<div class="main-content-inner">
+    <div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                Home
+            </li>
+        </ul><!-- /.breadcrumb -->
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box-header">
+                    <h3 class="box-title" style="text-align: center;">Quản lý CMS của <?php echo CGlobal::web_name; ?> </h3>
+                </div>
+                <?php if(isset($error) && !empty($error)): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php foreach($error as $itmError): ?>
+                            <p><b><?php echo $itmError; ?></b></p>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+                <div class="box-body" style="margin-top: 35px">
+
+                    <?php if(!empty($menu)): ?>
+                        <?php foreach($menu as $item): ?>
+                            <?php if(isset($item['sub']) && !empty($item['sub'])): ?>
+                                <?php foreach($item['sub'] as $sub): ?>
+                                    <?php if($is_root || (isset($sub['permission']) && in_array($sub['permission'],$aryPermission))): ?>
+                                        <?php if(isset($sub['showcontent']) && $sub['showcontent'] == 1): ?>
+                                            <div class="col-sm-6 col-md-3">
+                                                <a class="quick-btn a_control"  href="<?php echo URL::route($sub['RouteName']); ?>">
+                                                    <div class="thumbnail text-center">
+                                                        <i class="<?php echo $sub['icon']; ?> fa-5x"></i><br><?php echo $sub['name']; ?>
+
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        <?php endif; ?>
+                                        <?php if(isset($sub['clear']) && $sub['clear'] == 1): ?>
+                                            <div class="clear"></div>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+
+                    <?php /*<?php if($is_root || in_array('user_view',$aryPermission)): ?>
+                    <div class="col-sm-6 col-md-3">
+                        <a class="quick-btn a_control" href="<?php echo URL::route('admin.user_view'); ?>">
+                            <div class="thumbnail text-center">
+                                <i class="fa fa-user fa-5x"></i><br/>
+                                <span>Quản lý User</span>
+                            </div>
+                        </a>
+                    </div>
+                    <?php endif; ?>*/ ?>
+
+                    
+                 </div>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.page-content -->
+</div>

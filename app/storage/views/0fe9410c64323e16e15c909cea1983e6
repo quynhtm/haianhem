@@ -1,0 +1,76 @@
+<div class="main-content-inner">
+    <div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="<?php echo URL::route('admin.dashboard'); ?>">Home</a>
+            </li>
+            <li><a href="<?php echo URL::route('admin.user_view'); ?>"> Danh sách tài khoản</a></li>
+            <li class="active">Đổi mật khẩu</li>
+        </ul><!-- /.breadcrumb -->
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <?php echo Form::open(array('method' => 'POST', 'role'=>'form')); ?>
+
+                <?php if(isset($error)): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php foreach($error as $itmError): ?>
+                            <p><?php echo $itmError; ?></p>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+                <?php if(!$is_root || !$permission_change_pass): ?>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <i>Mật khẩu hiện tại</i>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <input type="password" class="form-control input-sm" name="old_password"
+                                   value="<?php if(isset($data['old_password'])): ?><?php echo $data['old_password']; ?><?php endif; ?>">
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <div class="clearfix"></div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <i>Mật khẩu mới</i>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="password" class="form-control input-sm" name="new_password"
+                               value="<?php if(isset($data['new_password'])): ?><?php echo $data['new_password']; ?><?php endif; ?>">
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <i>Xác nhận mật khẩu</i>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="password" class="form-control input-sm" name="confirm_new_password"
+                               value="<?php if(isset($data['confirm_new_password'])): ?><?php echo $data['confirm_new_password']; ?><?php endif; ?>">
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="form-group col-sm-6 text-right">
+                    <button  class="btn btn-primary"><i class="glyphicon glyphicon-floppy-saved"></i> Đổi mật khẩu</button>
+                </div>
+                <?php echo Form::close(); ?>
+
+                <!-- PAGE CONTENT ENDS -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.page-content -->
+</div>
+

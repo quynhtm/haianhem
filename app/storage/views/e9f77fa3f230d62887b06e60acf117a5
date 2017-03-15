@@ -1,0 +1,166 @@
+<div class="main-content-inner">
+    <div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="<?php echo URL::route('admin.dashboard'); ?>">Home</a>
+            </li>
+            <li class="active">Danh mục tin bài</li>
+        </ul><!-- /.breadcrumb -->
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
+                <div class="panel panel-info">
+                    <?php echo Form::open(array('method' => 'GET', 'role'=>'form')); ?>
+
+                    <div class="panel-body">
+                        <div class="form-group col-lg-3">
+                            <label for="category_name">Tên danh mục</label>
+                            <input type="text" class="form-control input-sm" id="category_name" name="category_name" placeholder="Tên danh mục" <?php if(isset($search['category_name']) && $search['category_name'] != ''): ?>value="<?php echo $search['category_name']; ?>"<?php endif; ?>>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="category_content_front">Thuộc khoa - trung tâm</label>
+                            <select name="category_depart_id" id="category_depart_id" class="form-control input-sm">
+                                <?php echo $optionCategoryDepart; ?>
+
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label for="category_status">Trạng thái</label>
+                            <select name="category_status" id="category_status" class="form-control input-sm">
+                                <?php echo $optionStatus; ?>
+
+                            </select>
+                        </div>
+                        
+                    </div>
+                    <div class="panel-footer text-right">
+                        <?php if($is_root || $permission_full ==1 || $permission_create == 1): ?>
+                        <span class="">
+                            <a class="btn btn-danger btn-sm" href="<?php echo URL::route('admin.category_edit'); ?>">
+                                <i class="ace-icon fa fa-plus-circle"></i>
+                                Thêm mới
+                            </a>
+                        </span>
+                        <?php endif; ?>
+                        <span class="">
+                            <button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-search"></i> Tìm kiếm</button>
+                        </span>
+                    </div>
+                    <?php echo Form::close(); ?>
+
+                </div>
+                <?php if(sizeof($data) > 0): ?>
+                    <div class="span clearfix"> <?php if($total >0): ?> Có tổng số <b><?php echo $total; ?></b> danh mục <?php endif; ?> </div>
+                    <br>
+                    <table class="table table-bordered table-hover">
+                        <thead class="thin-border-bottom">
+                        <tr class="">
+                            <th width="2%"class="text-center">STT</th>
+                            <!--<th width="1%" class="text-center"><input type="checkbox" id="checkAll"/></th>-->
+                            <th width="35%" class="td_list">Tên danh mục</th>
+                            <th width="20%" class="td_list">Danh mục cha</th>
+                            <!---<th width="15%" class="td_list">Khoa - trung tâm</th>-->
+                            <th width="5%" class="text-center">Thứ tự</th>
+
+                            <th width="5%" class="text-center">Show header</th>
+                            <th width="5%" class="text-center">Show trái</th>
+                            <th width="5%" class="text-center">Show phải</th>
+                            <th width="5%" class="text-center">Show center</th>
+
+                            <th width="15%" class="text-center">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($data as $key => $item): ?>
+                            <tr>
+                                <td class="text-center"><?php echo $key+1; ?></td>
+                                <!--<td class="text-center"><input class="check" type="checkbox" name="checkItems[]" id="sys_checkItems" value="<?php echo $item['category_id']; ?>"></td>-->
+                                <td>
+                                   <?php if($is_boss): ?>[<b><?php echo $item['category_id']; ?></b>]<?php endif; ?>
+                                       <?php if($item['category_parent_id']==0): ?>
+                                           <b><?php echo $item['padding_left'].$item['category_name']; ?></b>
+                                       <?php else: ?>
+                                            <?php echo $item['padding_left'].$item['category_name']; ?>
+
+                                       <?php endif; ?>
+                                </td>
+                                <td><?php if(isset($arrCategoryParent[$item['category_parent_id']])): ?><?php echo $arrCategoryParent[$item['category_parent_id']]; ?><?php else: ?> --- <?php endif; ?></td>
+                                <!--<td><?php if(isset($arrCategoryDepart[$item['category_depart_id']])): ?><?php echo $arrCategoryDepart[$item['category_depart_id']]; ?><?php else: ?> --- <?php endif; ?></td>-->
+                                <td class="text-center"><?php echo $item['category_order']; ?></td>
+
+                                <td class="text-center">
+                                    <?php if($item['category_show_top'] == CGlobal::status_show): ?>
+                                        <a href="javascript:void(0);" onclick="Admin.updatePositionStatusItem(<?php echo $item['category_id']; ?>,<?php echo $item['category_show_top']; ?>,1)"title="Hiện"><i class="fa fa-check fa-2x"></i></a>
+                                    <?php else: ?>
+                                        <a href="javascript:void(0);" onclick="Admin.updatePositionStatusItem(<?php echo $item['category_id']; ?>,<?php echo $item['category_show_top']; ?>,1)"style="color: red" title="Ẩn"><i class="fa fa-close fa-2x"></i></a>
+                                    <?php endif; ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php if($item['category_show_left'] == CGlobal::status_show): ?>
+                                        <a href="javascript:void(0);" onclick="Admin.updatePositionStatusItem(<?php echo $item['category_id']; ?>,<?php echo $item['category_show_left']; ?>,2)"title="Hiện"><i class="fa fa-check fa-2x"></i></a>
+                                    <?php else: ?>
+                                        <a href="javascript:void(0);" onclick="Admin.updatePositionStatusItem(<?php echo $item['category_id']; ?>,<?php echo $item['category_show_left']; ?>,2)"style="color: red" title="Ẩn"><i class="fa fa-close fa-2x"></i></a>
+                                    <?php endif; ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php if($item['category_show_right'] == CGlobal::status_show): ?>
+                                        <a href="javascript:void(0);" onclick="Admin.updatePositionStatusItem(<?php echo $item['category_id']; ?>,<?php echo $item['category_show_right']; ?>,3)"title="Hiện"><i class="fa fa-check fa-2x"></i></a>
+                                    <?php else: ?>
+                                        <a href="javascript:void(0);" onclick="Admin.updatePositionStatusItem(<?php echo $item['category_id']; ?>,<?php echo $item['category_show_right']; ?>,3)"style="color: red" title="Ẩn"><i class="fa fa-close fa-2x"></i></a>
+                                    <?php endif; ?>
+                                </td>
+                                <td class="text-center">
+                                    <?php if($item['category_show_center'] == CGlobal::status_show): ?>
+                                        <a href="javascript:void(0);" onclick="Admin.updatePositionStatusItem(<?php echo $item['category_id']; ?>,<?php echo $item['category_show_center']; ?>,4)"title="Hiện"><i class="fa fa-check fa-2x"></i></a>
+                                    <?php else: ?>
+                                        <a href="javascript:void(0);" onclick="Admin.updatePositionStatusItem(<?php echo $item['category_id']; ?>,<?php echo $item['category_show_center']; ?>,4)"style="color: red" title="Ẩn"><i class="fa fa-close fa-2x"></i></a>
+                                    <?php endif; ?>
+                                </td>
+
+                                <td class="text-center">
+                                    <?php if($item['category_status'] == 1): ?>
+                                        <a href="javascript:void(0);" onclick="Admin.updateStatusItem(<?php echo $item['category_id']; ?>,<?php echo $item['category_status']; ?>,1)"title="Hiện"><i class="fa fa-check fa-2x"></i></a>
+                                    <?php else: ?>
+                                        <a href="javascript:void(0);" onclick="Admin.updateStatusItem(<?php echo $item['category_id']; ?>,<?php echo $item['category_status']; ?>,1)"style="color: red" title="Ẩn"><i class="fa fa-close fa-2x"></i></a>
+                                    <?php endif; ?>
+                                    <span class="img_loading" id="img_loading_<?php echo $item['category_id']; ?>"></span>
+
+                                    <?php if($is_root || $permission_full ==1|| $permission_edit ==1  ): ?>
+                                       &nbsp;&nbsp;&nbsp;<a href="<?php echo URL::route('admin.category_edit',array('id' => $item['category_id'])); ?>" title="Sửa item"><i class="fa fa-edit fa-2x"></i></a>
+                                    <?php endif; ?>
+                                    <?php if($is_root || $permission_full ==1 || $permission_delete == 1): ?>
+                                       &nbsp;&nbsp;&nbsp;
+                                       <a href="javascript:void(0);" onclick="Admin.deleteItem(<?php echo $item['category_id']; ?>,10)" title="Xóa Item"><i class="fa fa-trash fa-2x"></i></a>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <div class="text-right">
+                        <?php echo $paging; ?>
+
+                    </div>
+                <?php else: ?>
+                    <div class="alert">
+                        Không có dữ liệu
+                    </div>
+                <?php endif; ?>
+                            <!-- PAGE CONTENT ENDS -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.page-content -->
+</div>
+<script type="text/javascript" xmlns="http://www.w3.org/1999/html">
+    $(document).ready(function() {
+        $("#checkAll").click(function () {
+            $(".check").prop('checked', $(this).prop('checked'));
+        });
+    });
+</script>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<?php echo CGlobal::$extraMeta; ?>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="shortcut icon" href="<?php echo Config::get('config.WEB_ROOT'); ?>assets/frontend/img/favicon.ico" type="image/vnd.microsoft.icon">
+		
+	<?php echo HTML::style('assets/lib/bootstrap/css/bootstrap.css');; ?>
+
+	<?php echo HTML::style('assets/frontend/css/site.css');; ?>
+
+	<?php echo HTML::style('assets/frontend/css/media.css');; ?>
+
+	
+	<?php echo HTML::script('assets/js/jquery.2.1.1.min.js', array(), Config::get('config.SECURE')); ?>
+
+	<?php echo HTML::script('assets/lib/bootstrap/js/bootstrap.min.js', array(), Config::get('config.SECURE')); ?>
+
+	 
+	<?php echo CGlobal::$extraHeaderCSS; ?>
+
+	<?php echo CGlobal::$extraHeaderJS; ?>
+
+	
+    <script type="text/javascript">
+        var WEB_ROOT = "<?php echo url('', array(), Config::get('config.SECURE')); ?>";
+        var DEVMODE = "<?php echo Config::get('config.DEVMODE'); ?>";
+        var COOKIE_DOMAIN = "<?php echo Config::get('config.DOMAIN_COOKIE_SERVER'); ?>";
+    </script>
+    
+    <?php if(Config::get('config.DEVMODE') == false): ?>
+        <meta name="google-site-verification" content="b71v5Ru4Ajs2e9RwaLDzECAyF3y7RhPX680ixfPpY3I" />
+    <?php endif; ?>
+</head>
+<body>
+<div id="wrapper">
+	<?php if(isset($header)): ?>
+	<div id="header">
+		<?php echo $header; ?>
+
+	</div>
+	<?php endif; ?>
+	 
+	<div id="content">
+		<div class="line-content">
+			<div class="container">
+				<div class="wraps">
+					<?php if(isset($slider)): ?>
+						<?php echo $slider; ?>
+
+					<?php endif; ?>
+					<div class="line">
+						<?php if(isset($left)): ?>
+							<?php echo $left; ?>
+
+						<?php endif; ?>
+
+						<?php if(isset($content)): ?>
+							<?php echo $content; ?>
+
+						<?php endif; ?>
+
+						<?php if(isset($right)): ?>
+							<?php echo $right; ?>
+
+						<?php endif; ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<?php if(isset($footer)): ?>
+	<div id="footer">
+		<?php echo $footer; ?>
+
+	</div>
+	<?php endif; ?>
+</div>
+<?php echo CGlobal::$extraFooterCSS; ?>
+
+<?php echo CGlobal::$extraFooterJS; ?>
+
+</body>
+</html>

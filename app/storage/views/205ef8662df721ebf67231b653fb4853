@@ -1,0 +1,88 @@
+<div class="col-right">
+	<div class="item-box">
+		<div class="top-box">
+         <span>
+         <a href="">Tuyển sinh</a>
+         </span>
+		</div>
+		<div class="list">
+			<ul>
+				<li><a href="" title="Trình độ cao đẳng">Trình độ cao đẳng</a></li>
+				<li><a href="" title="Trình độ Trung cấp chuyên nghiệp">Trình độ Trung cấp chuyên nghiệp</a></li>
+				<li><a href="" title="Các khóa ngắn hạn">Các khóa ngắn hạn</a></li>
+				<li><a href="" title="Tra cứu điểm tuyển sinh">Tra cứu điểm tuyển sinh</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="item-box">
+		<div class="top-box">
+         <span>
+         <a href="">Nghiên cứu khoa học</a>
+         </span>
+		</div>
+		<div class="list">
+			<ul>
+				<li><a href="" title="Nghiên cứu khoa học">Nghiên cứu khoa học</a></li>
+				<li><a href="" title="Hợp tác Quốc tế">Hợp tác Quốc tế</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="item-box">
+		<div class="top-box">
+         <span>
+         <a href="">Tốt nghiệp-Cựu sinh viên</a>
+         </span>
+		</div>
+		<div class="list">
+			<ul>
+				<li><a href="" title="Tra cứu văn bằng chứng chỉ">Tra cứu văn bằng chứng chỉ</a></li>
+				<li><a href="" title="Khảo sát tình trạng việc làm">Khảo sát tình trạng việc làm</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="item-box">
+		<div class="top-box">
+         <span>
+         <a href="">Đoàn TN - Hội SV</a>
+         </span>
+		</div>
+		<div class="list">
+			<ul>
+				<li><a href="" title="Thông tin hoạt động">Thông tin hoạt động</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="item-box">
+		<div class="top-box">
+         <span>
+         <a href="">Liên kết</a>
+         </span>
+		</div>
+		<div class="list">
+			<div class="title-select">» Cơ quan Đảng - Nhà nước</div>
+			<select name="link" class="selectLink">
+				<option>--Liên kết---</option>
+				<option>ĐH QG Hà Nội</option>
+				<option>ĐH Bách Khoa</option>
+			</select>
+			<div class="title-select">» Các trường Đại học</div>
+			<select name="link" class="selectLink">
+				<option>--Liên kết---</option>
+				<option>ĐH QG Hà Nội</option>
+				<option>ĐH Bách Khoa</option>
+			</select>
+			<div class="title-select">» Các website khác</div>
+			<select name="link" class="selectLink">
+				<option>--Liên kết---</option>
+				<option>ĐH QG Hà Nội</option>
+				<option>ĐH Bách Khoa</option>
+			</select>
+		</div>
+	</div>
+	<div class="item-box">
+		<img alt="" src="<?php echo URL::route('site.home'); ?>/assets/frontend/img/hoc phi copy.jpg">
+	</div>
+	<div class="item-box">
+		<img alt="" src="<?php echo URL::route('site.home'); ?>/assets/frontend/img/thu-dien-tu.gif">
+	</div>
+</div>
