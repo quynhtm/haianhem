@@ -18,10 +18,6 @@ class BaseSiteController extends BaseController{
     }
 	public function footer(){
         $footer = '';
-        $arrFooter = Info::getItemByKeyword('SITE_FOOTER_LEFT');
-        if(sizeof($arrFooter) > 0){
-            $footer = stripslashes($arrFooter->info_content);
-        }
 		$this->layout->footer = View::make("site.BaseLayouts.footer")->with('footer', $footer);
 	}
 }
