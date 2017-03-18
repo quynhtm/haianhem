@@ -14,13 +14,16 @@ class CGlobal{
     public static $extraFooterJS = '';
     public static $extraMeta = '';
     public static $pageAdminTitle = 'Dashboard Admin';
-    public static $pageShopTitle = 'CĐSPTW Admin';
+    public static $pageShopTitle = 'Manager Chat Fanpage Admin';
 
-    const web_name = 'Cdsptw.edu.vn';
-    const web_keywords= 'Cao đẳng Trung ương';
-    const web_description= 'Cao đẳng Trung ương';
-    public static $pageTitle = 'Cao đẳng Trung ương';
-    
+    const web_name = 'Manager Chat Fanpage';
+    const web_keywords= 'Manager Chat Fanpage';
+    const web_description= 'Manager Chat Fanpage';
+    public static $pageTitle = 'Manager Chat Fanpage';
+
+    const txt403 = 'Không được truy cập...';
+    const txt404 = 'Không tìm thấy...';
+
     const num_scroll_page = 2;
     const number_limit_show = 30;
     const number_show_30 = 30;

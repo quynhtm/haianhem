@@ -1,12 +1,32 @@
 @media (min-width: 1200px){
-	
+
 }
 @media (min-width: 992px) and (max-width: 1200px) {
-	
+
 }
 @media (min-width: 768px) and (max-width: 992px) {
-	
+
 }
 @media (max-width: 768px) {
-	
+    .navbar-default .navbar-brand {
+        width: 50%;
+        float: left;
+        display: inline-block;
+        text-align: left;
+    }
+    .nav.navbar-nav.navbar-right {
+        float: right;
+        display: inline-block;
+        width: 45%;
+        margin: 0 !important;
+    }
+    .container > .navbar-header{
+        margin: 0 !important;
+    }
+    .nav > li, .nav > li > a {
+        display: inline-block;
+    }
+    .avatar-navbar.custom-dropdown-menu {
+        width: 78%;
+    }
 }

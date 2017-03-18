@@ -1,23 +1,20 @@
 <?php
 /*
-* @Created by: DUYNX
+* @Created by: HSS
 * @Author    : nguyenduypt86@gmail.com
-* @Date      : 11/2016
+* @Date      : 08/2016
 * @Version   : 1.0
 */
 
-//Home
+//Index
 Route::any('/', array('as' => 'site.home','uses' => 'SiteHomeController@index'));
-Route::get('404.html',array('as' => 'site.page404','uses' =>'SiteHomeController@page404'));
-Route::get('tim-kiem.html',array('as' => 'site.searchItems','uses' =>'SiteHomeController@searchItems'));
-Route::match(['GET','POST'],'lien-he.html',array('as' => 'site.pageContact','uses' =>'SiteHomeController@pageContact'));
+//Login Facebook
+Route::match(['GET','POST'], 'facebooklogin', array('as' => 'loginFacebook','uses' => 'MemberLoginController@loginFacebook'));
+Route::match(['GET','POST'],'thoat', array('as' => 'member.logout','uses' => 'MemberLoginController@logout'));
+Route::match(['GET','POST'], 'ajaxActFanpage', array('as' => 'site.ajaxActFanpage','uses' => 'IndexController@ajaxActFanpage'));
 
-//Category
-Route::get('{name}-{id}.html',array('as' => 'site.pageCategory','uses' =>'SiteHomeController@pageCategory'))->where('name', '[A-Z0-9a-z_\-]+')->where('id', '[0-9]+');
-
-//Captcha
-Route::match(['GET','POST'], 'captcha', array('as' => 'site.linkCaptcha','uses' =>'SiteHomeController@linkCaptcha'));
-Route::match(['GET','POST'], 'captchaCheckAjax', array('as' => 'site.captchaCheckAjax','uses' =>'SiteHomeController@captchaCheckAjax'));
-
-
-
+//Get List Conversation
+Route::match(['GET','POST'], 'page/{id?}', array('as' => 'admin.getFullPageChat','uses' => 'ChatController@getFullPageChat'))->where('id', '[a-z0-9]+');
+Route::match(['GET','POST'], 'ajaxGetMessagesConversation', array('as' => 'admin.ajaxGetMessagesConversation','uses' => 'ChatController@ajaxGetMessagesConversation'));
+Route::match(['GET','POST'], 'ajaxSendMessageInConversation', array('as' => 'admin.ajaxSendMessageInConversation','uses' => 'ChatController@ajaxSendMessageInConversation'));
+Route::match(['GET','POST'], 'webhooksGetMessageInConversation', array('as' => 'admin.webhooksGetMessageInConversation','uses' => 'ChatController@webhooksGetMessageInConversation'));

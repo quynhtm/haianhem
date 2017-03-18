@@ -23,7 +23,7 @@
     </script>
     
     @if(Config::get('config.DEVMODE') == false)
-        <meta name="google-site-verification" content="b71v5Ru4Ajs2e9RwaLDzECAyF3y7RhPX680ixfPpY3I" />
+        <meta name="google-site-verification" content="" />
     @endif
 </head>
 <body>
@@ -46,6 +46,9 @@
 	</div>
 	@endif
 </div>
+@if(isset($popupHiden))
+	{{$popupHiden}}
+@endif
 {{CGlobal::$extraFooterCSS}}
 {{CGlobal::$extraFooterJS}}
 </body>
