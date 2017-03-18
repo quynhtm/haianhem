@@ -16,7 +16,7 @@ class ChatController extends BaseSiteController{
 	}
 	public function getFullPageChat($id=0){
         if(empty($this->member)){
-            return Redirect::route('site.index');
+            return Redirect::route('site.home');
         }
 
 	    $page = MemberPage::getByPageFacebookId($id, $this->member['member_id_facebook']);
