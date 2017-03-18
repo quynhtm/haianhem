@@ -16,6 +16,7 @@ class CGlobal{
     public static $pageAdminTitle = 'Dashboard Admin';
     public static $pageShopTitle = 'Manager Chat Fanpage Admin';
 
+    const domain = 'chat.quanly.org';
     const web_name = 'Manager Chat Fanpage';
     const web_keywords= 'Manager Chat Fanpage';
     const web_description= 'Manager Chat Fanpage';
@@ -23,6 +24,14 @@ class CGlobal{
 
     const txt403 = 'Không được truy cập...';
     const txt404 = 'Không tìm thấy...';
+
+    //Api Key Facebook
+    const facebook_app_id = '685975718241032';
+    const facebook_app_secret = 'ff0dacf7c17e7aade63adc53b84b3a47';
+    const facebook_default_graph_version = 'v2.8';
+    const facebook_persistent_data_handler = 'session';
+    const facebook_hub_verify_token = 'chat_quanly_org';
+    const num_max_mess_new_in_conversation = 1000;
 
     const num_scroll_page = 2;
     const number_limit_show = 30;

@@ -32,9 +32,9 @@ class IndexController extends BaseSiteController{
 				$meta_img = ThumbImg::thumbBaseNormal(CGlobal::FOLDER_INFO, $arrMeta['_id'], $arrMeta['info_img'], 550, 0, '', true, true);
 			}
 		}
-		SeoMeta::SEO($meta_img, $meta_title, $meta_keywords, $meta_description);
+        FunctionLib::SEO($meta_img, $meta_title, $meta_keywords, $meta_description);
 		
-		$this->layout->content = View::make('site.content.index')->with('member', $this->member);
+		$this->layout->content = View::make('site.SiteLayouts.home')->with('member', $this->member);
 		$this->footer();
 	}
 	public function ajaxActFanpage(){

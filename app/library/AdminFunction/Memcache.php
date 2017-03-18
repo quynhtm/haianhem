@@ -11,6 +11,11 @@ class Memcache{
     const CACHE_TIME_TO_LIVE_ONE_MONTH = 2419200; //Time cache 1 thang
     const CACHE_TIME_TO_LIVE_ONE_YEAR =  29030400; //Time cache 1 nam
 
+    //Member
+    const CACHE_MEMBER_ID    = 'cache_member_id_';
+    const CACHE_MEMBER_PAGE_ID = 'cache_member_page_id_';
+    const CACHE_MEMBER_PAGE_FACEBOOK_ID = 'cache_member_page_facebook_id_';
+
     //user customer
     const CACHE_ALL_CUSTOMER = 'cache_all_customer';
     const CACHE_CUSTOMER_ID = 'cache_customer_id_';

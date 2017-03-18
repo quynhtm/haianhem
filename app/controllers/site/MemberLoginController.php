@@ -43,7 +43,7 @@ class MemberLoginController extends BaseSiteController{
 		 
 		if (!isset($accessToken)) {
 			$permissions = array('manage_pages', 'read_page_mailboxes', 'publish_pages', 'publish_actions', 'public_profile', 'email'); //Optional permissions
-			$loginUrl = $helper->getLoginUrl(Config::get('config.BASE_URL').'/facebooklogin', $permissions);
+			$loginUrl = $helper->getLoginUrl(Config::get('config.WEB_ROOT').'/facebooklogin', $permissions);
 			header("Location: ".$loginUrl);
 			exit;
 		}
@@ -206,6 +206,6 @@ class MemberLoginController extends BaseSiteController{
 		if(Session::has('member')){
 			Session::forget('member');
 		}
-		return Redirect::route('site.index');
+		return Redirect::route('site.home');
 	}
 }

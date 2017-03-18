@@ -16,7 +16,7 @@ SITE = {
     clickLoginFacebook:function(){
         jQuery('#clickLoginFacebook').click(function(){
             $.oauthPopup({
-                path: BASE_URL+'facebooklogin',
+                path: WEB_ROOT+'/facebooklogin',
                 width:300,
                 height:200,
                 callback: function(){
@@ -30,10 +30,10 @@ SITE = {
             debugMode:!1,
             onready:function(){
                 soundManager.createSound({
-                    id: "drop",url: BASE_URL + '/assets/libs/Sound/drop.mp3',
+                    id: "drop",url: WEB_ROOT + '/assets/libs/Sound/drop.mp3',
                 }),
                     soundManager.createSound({
-                        id: "notify",url: BASE_URL + '/assets/libs/Sound/notify.mp3'
+                        id: "notify",url: WEB_ROOT + '/assets/libs/Sound/notify.mp3'
                     })
             }
         });
@@ -56,7 +56,7 @@ SITE = {
                 jQuery('.btnPageAcitve').addClass('act').removeAttr('disabled');
                 jQuery('.first-message').text('Vui lòng xác nhận kích hoạt trang');
                 jQuery('.actPageClick').addClass('act').text(name);
-                var url = BASE_URL+'ajaxActFanpage';
+                var url = WEB_ROOT+'/ajaxActFanpage';
                 jQuery('.btnPageAcitve.act').click(function(){
                     jQuery.ajax({
                         type: "POST",
@@ -133,7 +133,7 @@ SITE = {
                 var datac = $('#datac').val();
                 $('#replyMessagesBox').val('');
                 if(mess != '' && dataid != '' && datac != ''){
-                    var url = BASE_URL+'ajaxSendMessageInConversation';
+                    var url = WEB_ROOT+'/ajaxSendMessageInConversation';
                     $.ajax({
                         type: "POST",
                         url: url,

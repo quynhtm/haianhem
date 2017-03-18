@@ -12,7 +12,7 @@ class ChatController extends BaseSiteController{
 	
 	public function __construct(){
 		parent::__construct();
-		Utility::redirectHttps();
+        FunctionLib::redirectHttps();
 	}
 	public function getFullPageChat($id=0){
         if(empty($this->member)){
@@ -37,7 +37,7 @@ class ChatController extends BaseSiteController{
 				$meta_img = ThumbImg::thumbBaseNormal(CGlobal::FOLDER_INFO, $arrMeta['_id'], $arrMeta['info_img'], 550, 0, '', true, true);
 			}
 		}
-		SeoMeta::SEO($meta_img, $meta_title, $meta_keywords, $meta_description);
+        FunctionLib::SEO($meta_img, $meta_title, $meta_keywords, $meta_description);
 		
 		//Get All Conversations
 		if(sizeof($page) > 0 && $page->member_page_status != CGlobal::status_block){
@@ -65,7 +65,7 @@ class ChatController extends BaseSiteController{
 			$response = $fb->getClient()->sendRequest($request);
 			$arrMessages = $response->getDecodedBody();
 
-			$this->layout->content = View::make('site.content.chat')
+			$this->layout->content = View::make('site.SiteLayouts.chat')
                                     ->with('member', $this->member)
                                     ->with('arrMessages', $arrMessages)
                                     ->with('id', $id);
@@ -146,7 +146,7 @@ class ChatController extends BaseSiteController{
 
         $result = array();
         if(sizeof($arrItem) > 0){
-            $list = (object)FuncLib::sortBySubValue($arrItem, 'messages_created', $asc = true, $preserveKeys = true);
+            $list = (object)FunctionLib::sortBySubValue($arrItem, 'messages_created', $asc = true, $preserveKeys = true);
             foreach($list as $k=>$item){
                 $_item = array(
                     'messages_content'=>$item->messages_content,
@@ -164,7 +164,7 @@ class ChatController extends BaseSiteController{
 	public function ajaxSendMessageInConversation(){
 
 	    if(empty($this->member)){
-            return Redirect::route('site.index');
+            return Redirect::route('site.home');
         }
 
         $pageId = addslashes(Request::get('datac', ''));

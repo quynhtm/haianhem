@@ -25,7 +25,7 @@ class BaseSiteController extends BaseController{
 								->with('fanpage_current', $fanpage_current);
 	}
 	public function popupHiden($member=array()){
-		$this->layout->popupHiden = View::make("site.block.popupHiden")
+		$this->layout->popupHiden = View::make("site.BaseLayouts.popupHiden")
 									->with('member', $member);
 	}
 	public function footer(){
