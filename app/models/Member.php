@@ -8,7 +8,7 @@
 
 class Member extends Eloquent {
     
-    protected $table = 'member';
+    protected $table = 'chat_member';
     protected $primaryKey = 'member_id';
     public  $timestamps = false;
 

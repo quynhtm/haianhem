@@ -8,7 +8,7 @@
 
 class MemberPage extends Eloquent {
     
-    protected $table = 'member_page';
+    protected $table = 'chat_member_page';
     protected $primaryKey = 'member_page_id';
     public  $timestamps = false;
 

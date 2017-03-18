@@ -7,7 +7,7 @@
 */
 
 class Messages extends Eloquent {
-	protected $table = 'messages';
+	protected $table = 'chat_messages';
     protected $primaryKey = 'messages_id';
     public  $timestamps = false;
 

@@ -7,7 +7,7 @@
 */
 
 //Index
-Route::any('/', array('as' => 'site.home','uses' => 'SiteHomeController@index'));
+Route::any('/', array('as' => 'site.home','uses' => 'IndexController@index'));
 //Login Facebook
 Route::match(['GET','POST'], 'facebooklogin', array('as' => 'loginFacebook','uses' => 'MemberLoginController@loginFacebook'));
 Route::match(['GET','POST'],'thoat', array('as' => 'member.logout','uses' => 'MemberLoginController@logout'));

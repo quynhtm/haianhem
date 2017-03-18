@@ -13,6 +13,7 @@ class BaseSiteController extends BaseController{
 	public function __construct(){
 		//Init
         FunctionLib::site_css('lib/font-awesome/4.2.0/css/font-awesome.min.css', CGlobal::$POS_HEAD);
+        FunctionLib::site_js('frontend/js/site.js', CGlobal::$POS_END);
         FunctionLib::site_js('frontend/js/socket.io.js', CGlobal::$POS_END);
         FunctionLib::site_js('lib/Sound/soundmanager.js', CGlobal::$POS_END);
 		

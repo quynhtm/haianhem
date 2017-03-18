@@ -10,7 +10,7 @@ class IndexController extends BaseSiteController{
 	
 	public function __construct(){
 		parent::__construct();
-		Utility::redirectHttps();
+        FunctionLib::redirectHttps();
 	}
 	public function index(){
 		$this->header($this->member, array());

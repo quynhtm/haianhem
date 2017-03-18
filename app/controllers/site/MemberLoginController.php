@@ -13,14 +13,13 @@ class MemberLoginController extends BaseSiteController{
   
 	public function __construct(){
 		parent::__construct();
-		Loader::loadJS('frontend/js/site.js', CGlobal::$postEnd);
 		if(Session::has('member')){
 			$this->member = Session::get('member');
 		}
 	}
 	
 	public function loginFacebook(){
-		//chat.com
+
 		$fb = new Facebook\Facebook ([
 				'app_id' => CGlobal::facebook_app_id,
 				'app_secret' => CGlobal::facebook_app_secret,
