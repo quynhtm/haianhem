@@ -4,7 +4,6 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c5b54f36007321ce7028c4dbf87e5b10",
     "content-hash": "d1d09116283d337d14f9c34956d374e0",
     "packages": [
         {
@@ -53,7 +52,7 @@
                 "laravel",
                 "pdf"
             ],
-            "time": "2014-08-20 13:05:36"
+            "time": "2014-08-20T13:05:36+00:00"
         },
         {
             "name": "bkwld/croppa",
@@ -102,7 +101,7 @@
                 }
             ],
             "description": "Image thumbnail creation through specially formatted URLs for Laravel",
-            "time": "2016-09-08 16:24:58"
+            "time": "2016-09-08T16:24:58+00:00"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -149,7 +148,7 @@
                 "class",
                 "preload"
             ],
-            "time": "2014-03-12 00:05:31"
+            "time": "2014-03-12T00:05:31+00:00"
         },
         {
             "name": "d11wtq/boris",
@@ -183,7 +182,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2014-01-17 12:21:18"
+            "time": "2014-01-17T12:21:18+00:00"
         },
         {
             "name": "dompdf/dompdf",
@@ -224,7 +223,7 @@
             ],
             "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
             "homepage": "https://github.com/dompdf/dompdf",
-            "time": "2015-12-07 04:07:13"
+            "time": "2015-12-07T04:07:13+00:00"
         },
         {
             "name": "filp/whoops",
@@ -282,7 +281,7 @@
                 "whoops",
                 "zf2"
             ],
-            "time": "2015-06-29 05:42:04"
+            "time": "2015-06-29T05:42:04+00:00"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -324,7 +323,7 @@
                 "hashing",
                 "password"
             ],
-            "time": "2014-11-20 16:49:30"
+            "time": "2014-11-20T16:49:30+00:00"
         },
         {
             "name": "jeremeamia/SuperClosure",
@@ -372,7 +371,7 @@
                 "serialize",
                 "tokenizer"
             ],
-            "time": "2015-01-10 01:09:28"
+            "time": "2015-01-10T01:09:28+00:00"
         },
         {
             "name": "laravel/framework",
@@ -487,7 +486,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-11-12 01:41:37"
+            "time": "2016-11-12T01:41:37+00:00"
         },
         {
             "name": "league/flysystem",
@@ -570,7 +569,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2017-02-09 11:33:58"
+            "time": "2017-02-09T11:33:58+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -648,7 +647,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2017-03-13 07:08:03"
+            "time": "2017-03-13T07:08:03+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -701,7 +700,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2017-01-16 07:55:07"
+            "time": "2017-01-16T07:55:07+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -746,7 +745,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2014-07-23 18:24:17"
+            "time": "2014-07-23T18:24:17+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -794,7 +793,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2017-03-13 16:22:52"
+            "time": "2017-03-13T16:22:52+00:00"
         },
         {
             "name": "patchwork/utf8",
@@ -853,7 +852,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2016-05-18 13:57:10"
+            "time": "2016-05-18T13:57:10+00:00"
         },
         {
             "name": "phenx/php-font-lib",
@@ -887,7 +886,7 @@
             ],
             "description": "A library to read, parse, export and make subsets of different types of font files.",
             "homepage": "https://github.com/PhenX/php-font-lib",
-            "time": "2014-02-01 15:22:28"
+            "time": "2014-02-01T15:22:28+00:00"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -985,7 +984,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2015-01-28 21:50:33"
+            "time": "2015-01-28T21:50:33+00:00"
         },
         {
             "name": "predis/predis",
@@ -1035,7 +1034,7 @@
                 "predis",
                 "redis"
             ],
-            "time": "2014-08-01 09:43:10"
+            "time": "2014-08-01T09:43:10+00:00"
         },
         {
             "name": "psr/log",
@@ -1082,7 +1081,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10 12:19:37"
+            "time": "2016-10-10T12:19:37+00:00"
         },
         {
             "name": "stack/builder",
@@ -1131,7 +1130,7 @@
             "keywords": [
                 "stack"
             ],
-            "time": "2016-06-02 06:58:42"
+            "time": "2016-06-02T06:58:42+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -1185,7 +1184,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2017-02-13 07:52:53"
+            "time": "2017-02-13T07:52:53+00:00"
         },
         {
             "name": "symfony/browser-kit",
@@ -1242,7 +1241,7 @@
             ],
             "description": "Symfony BrowserKit Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-21 08:32:25"
+            "time": "2017-02-21T08:32:25+00:00"
         },
         {
             "name": "symfony/console",
@@ -1302,7 +1301,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-28 18:03:12"
+            "time": "2017-02-28T18:03:12+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -1355,7 +1354,7 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-21 08:32:25"
+            "time": "2017-02-21T08:32:25+00:00"
         },
         {
             "name": "symfony/debug",
@@ -1412,7 +1411,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-18 18:28:08"
+            "time": "2017-02-18T18:28:08+00:00"
         },
         {
             "name": "symfony/dom-crawler",
@@ -1467,7 +1466,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-21 08:32:25"
+            "time": "2017-02-21T08:32:25+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -1527,7 +1526,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-21 08:33:48"
+            "time": "2017-02-21T08:33:48+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -1576,7 +1575,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-18 17:06:33"
+            "time": "2017-02-18T17:06:33+00:00"
         },
         {
             "name": "symfony/finder",
@@ -1625,7 +1624,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-21 08:32:25"
+            "time": "2017-02-21T08:32:25+00:00"
         },
         {
             "name": "symfony/http-foundation",
@@ -1681,7 +1680,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-03-04 10:53:31"
+            "time": "2017-03-04T10:53:31+00:00"
         },
         {
             "name": "symfony/http-kernel",
@@ -1763,7 +1762,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
-            "time": "2017-03-06 01:33:35"
+            "time": "2017-03-06T01:33:35+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1822,7 +1821,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14 01:06:16"
+            "time": "2016-11-14T01:06:16+00:00"
         },
         {
             "name": "symfony/process",
@@ -1871,7 +1870,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2017-03-03 16:35:37"
+            "time": "2017-03-03T16:35:37+00:00"
         },
         {
             "name": "symfony/routing",
@@ -1945,7 +1944,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-03-02 14:51:26"
+            "time": "2017-03-02T14:51:26+00:00"
         },
         {
             "name": "symfony/security-core",
@@ -2010,7 +2009,7 @@
             ],
             "description": "Symfony Security Component - Core Library",
             "homepage": "https://symfony.com",
-            "time": "2017-03-01 19:43:24"
+            "time": "2017-03-01T19:43:24+00:00"
         },
         {
             "name": "symfony/translation",
@@ -2073,7 +2072,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-03-03 16:35:37"
+            "time": "2017-03-03T16:35:37+00:00"
         },
         {
             "name": "weotch/phpthumb",
@@ -2108,7 +2107,7 @@
                 }
             ],
             "description": "Fork of PHPThumb that adds auto-image rotation based on EXIF data and composer support",
-            "time": "2015-05-12 22:56:19"
+            "time": "2015-05-12T22:56:19+00:00"
         }
     ],
     "packages-dev": [],

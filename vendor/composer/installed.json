@@ -18,7 +18,7 @@
             "ext-tokenizer": "*",
             "php": ">=5.2"
         },
-        "time": "2014-07-23 18:24:17",
+        "time": "2014-07-23T18:24:17+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -64,7 +64,7 @@
         "require": {
             "php": ">=5.3.9"
         },
-        "time": "2017-02-21 08:32:25",
+        "time": "2017-02-21T08:32:25+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -115,7 +115,7 @@
         "require": {
             "php": ">=5.3.9"
         },
-        "time": "2017-02-18 17:06:33",
+        "time": "2017-02-18T17:06:33+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -169,7 +169,7 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-        "time": "2016-11-14 01:06:16",
+        "time": "2016-11-14T01:06:16+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -227,7 +227,7 @@
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2016-10-10 12:19:37",
+        "time": "2016-10-10T12:19:37+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -284,7 +284,7 @@
             "symfony/class-loader": "~2.2",
             "symfony/http-kernel": "~2.3.24|~2.5.9|^2.6.2"
         },
-        "time": "2017-02-18 18:28:08",
+        "time": "2017-02-18T18:28:08+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -346,7 +346,7 @@
             "symfony/event-dispatcher": "",
             "symfony/process": ""
         },
-        "time": "2017-02-28 18:03:12",
+        "time": "2017-02-28T18:03:12+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -401,7 +401,7 @@
             "symfony/filesystem": "~2.1",
             "symfony/finder": "~2.1"
         },
-        "time": "2014-03-12 00:05:31",
+        "time": "2014-03-12T00:05:31+00:00",
         "bin": [
             "classpreloader.php"
         ],
@@ -451,7 +451,7 @@
             "ext-posix": "*",
             "ext-readline": "*"
         },
-        "time": "2014-01-17 12:21:18",
+        "time": "2014-01-17T12:21:18+00:00",
         "bin": [
             "bin/boris"
         ],
@@ -482,7 +482,7 @@
         "require-dev": {
             "phpunit/phpunit": "4.*"
         },
-        "time": "2014-11-20 16:49:30",
+        "time": "2014-11-20T16:49:30+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -529,7 +529,7 @@
         "require-dev": {
             "mockery/mockery": "0.9.*"
         },
-        "time": "2015-06-29 05:42:04",
+        "time": "2015-06-29T05:42:04+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -590,7 +590,7 @@
         "require-dev": {
             "phpunit/phpunit": "~3.7"
         },
-        "time": "2015-01-10 01:09:28",
+        "time": "2015-01-10T01:09:28+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -666,7 +666,7 @@
             "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
             "sentry/sentry": "Allow sending log messages to a Sentry server"
         },
-        "time": "2017-03-13 07:08:03",
+        "time": "2017-03-13T07:08:03+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -730,7 +730,7 @@
             "symfony/config": "",
             "symfony/yaml": ""
         },
-        "time": "2017-03-03 16:35:37",
+        "time": "2017-03-03T16:35:37+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -786,7 +786,7 @@
             "friendsofphp/php-cs-fixer": "~2",
             "phpunit/phpunit": "~4.0 || ~5.0"
         },
-        "time": "2017-01-16 07:55:07",
+        "time": "2017-01-16T07:55:07+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -843,7 +843,7 @@
             "ext-mbstring": "Use Mbstring for best performance",
             "ext-wfio": "Use WFIO for UTF-8 filesystem access on Windows"
         },
-        "time": "2016-05-18 13:57:10",
+        "time": "2016-05-18T13:57:10+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -908,7 +908,7 @@
             "ext-mcrypt": "Install the Mcrypt extension in order to speed up a wide variety of cryptographic operations.",
             "pear-pear/PHP_Compat": "Install PHP_Compat to get phpseclib working on PHP < 4.3.3."
         },
-        "time": "2015-01-28 21:50:33",
+        "time": "2015-01-28T21:50:33+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1004,7 +1004,7 @@
             "ext-curl": "Allows access to Webdis when paired with phpiredis",
             "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
         },
-        "time": "2014-08-01 09:43:10",
+        "time": "2014-08-01T09:43:10+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1060,7 +1060,7 @@
             "symfony/dependency-injection": "",
             "symfony/http-kernel": ""
         },
-        "time": "2017-02-21 08:33:48",
+        "time": "2017-02-21T08:33:48+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1115,7 +1115,7 @@
         "require-dev": {
             "symfony/expression-language": "~2.4"
         },
-        "time": "2017-03-04 10:53:31",
+        "time": "2017-03-04T10:53:31+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1202,7 +1202,7 @@
             "symfony/finder": "",
             "symfony/var-dumper": ""
         },
-        "time": "2017-03-06 01:33:35",
+        "time": "2017-03-06T01:33:35+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1258,7 +1258,7 @@
         "require-dev": {
             "silex/silex": "~1.0"
         },
-        "time": "2016-06-02 06:58:42",
+        "time": "2016-06-02T06:58:42+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1308,7 +1308,7 @@
             "mockery/mockery": "~0.9.1",
             "symfony/phpunit-bridge": "~3.2"
         },
-        "time": "2017-02-13 07:52:53",
+        "time": "2017-02-13T07:52:53+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1366,7 +1366,7 @@
         "suggest": {
             "symfony/css-selector": ""
         },
-        "time": "2017-02-21 08:32:25",
+        "time": "2017-02-21T08:32:25+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1425,7 +1425,7 @@
         "suggest": {
             "symfony/process": ""
         },
-        "time": "2017-02-21 08:32:25",
+        "time": "2017-02-21T08:32:25+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1476,7 +1476,7 @@
         "require": {
             "php": ">=5.3.9"
         },
-        "time": "2017-02-21 08:32:25",
+        "time": "2017-02-21T08:32:25+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1531,7 +1531,7 @@
         "require": {
             "php": ">=5.3.9"
         },
-        "time": "2017-03-03 16:35:37",
+        "time": "2017-03-03T16:35:37+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1601,7 +1601,7 @@
             "symfony/http-foundation": "For using a Symfony Request object",
             "symfony/yaml": "For using the YAML loader"
         },
-        "time": "2017-03-02 14:51:26",
+        "time": "2017-03-02T14:51:26+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1664,7 +1664,7 @@
         "suggest": {
             "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
         },
-        "time": "2017-03-13 16:22:52",
+        "time": "2017-03-13T16:22:52+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1724,7 +1724,7 @@
             "symfony/http-foundation": "",
             "symfony/validator": "For using the user password constraint"
         },
-        "time": "2017-03-01 19:43:24",
+        "time": "2017-03-01T19:43:24+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1772,7 +1772,7 @@
             "reference": "c30c7fc00a6b0d863e9bb4c5d5dd015298b2dc82",
             "shasum": ""
         },
-        "time": "2014-02-01 15:22:28",
+        "time": "2014-02-01T15:22:28+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1811,7 +1811,7 @@
         "require": {
             "phenx/php-font-lib": "0.2.*"
         },
-        "time": "2015-12-07 04:07:13",
+        "time": "2015-12-07T04:07:13+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1918,7 +1918,7 @@
         "suggest": {
             "doctrine/dbal": "Allow renaming columns and dropping SQLite columns."
         },
-        "time": "2016-11-12 01:41:37",
+        "time": "2016-11-12T01:41:37+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1973,7 +1973,7 @@
             "illuminate/support": "~4.0",
             "php": ">=5.3.0"
         },
-        "time": "2014-08-20 13:05:36",
+        "time": "2014-08-20T13:05:36+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2021,7 +2021,7 @@
         "replace": {
             "dannytrue/phpthumb": "dev-master#2d8898f62e75a743e248dd5906a038d574e0dfe0"
         },
-        "time": "2015-05-12 22:56:19",
+        "time": "2015-05-12T22:56:19+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -2081,7 +2081,7 @@
             "league/flysystem-webdav": "Allows you to use WebDAV storage",
             "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter"
         },
-        "time": "2017-02-09 11:33:58",
+        "time": "2017-02-09T11:33:58+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2157,7 +2157,7 @@
             "mockery/mockery": "~0.9",
             "phpunit/phpunit": "~4.0"
         },
-        "time": "2016-09-08 16:24:58",
+        "time": "2016-09-08T16:24:58+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
