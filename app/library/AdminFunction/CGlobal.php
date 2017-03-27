@@ -31,7 +31,7 @@ class CGlobal{
     const facebook_default_graph_version = 'v2.8';
     const facebook_persistent_data_handler = 'session';
     const facebook_hub_verify_token = 'chat_quanly_org';
-    const num_max_mess_new_in_conversation = 1000;
+    const num_max_mess_new_in_conversation = 50;
 
     const num_scroll_page = 2;
     const number_limit_show = 30;
